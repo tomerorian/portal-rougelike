@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleMovementInput();
-        MazeGeneration.Cell cell = mazeGen.GetMazeCellByWorldPos(rb.position);
-        print(cell.distanceFromStart);
     }
 
     private void HandleMovementInput()
