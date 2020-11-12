@@ -2,20 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static MazeGeneration;
 
 public class MazeGenerator : MonoBehaviour
 {
+    [Header("Refs")]
     [SerializeField] Tilemap layoutTileMap = null;
     [SerializeField] TileBase tile = null;
 
+    [Header("Config")]
+    [SerializeField] int width = 50;
+    [SerializeField] int height = 50;
+    [SerializeField] float adjacentCellChange = 0.06f;
+
     void Start()
     {
-        Vector3Int tilePos = Vector3Int.zero;
+        Cell[,] maze = GenerateMaze(width, height, adjacentCellChange);
 
-        for (int i = 0; i < 10; i++)
+        Vector3Int pos = new Vector3Int(0, 0, 0);
+
+        foreach (Cell cell in maze)
         {
-            layoutTileMap.SetTile(tilePos, tile);
-            tilePos.x += 1;
+            if (cell.isPath)
+            {
+                pos.x = cell.x;
+                pos.y = cell.y;
+                layoutTileMap.SetTile(pos, tile);
+            }
         }
     }
 }
