@@ -44,21 +44,22 @@ Tilemap:
   - first: {x: -1, y: 0, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
+      m_TileIndex: 1
       m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
-      m_AllTileFlags: 1073741825
+      m_AllTileFlags: 1073741826
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 85c26652865b1aa4ea4b62467228e282, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 2bd5f0eb739c6b64f81243e76708afcf, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: e2ef2f16b965537469dc2c1344e1ae2c, type: 3}
+    m_Data: {fileID: -8416701671517192655, guid: 70a1d14a199cd1249be4f0da961a4a33,
+      type: 3}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -163,7 +164,7 @@ GameObject:
   - component: {fileID: 1886147770694499649}
   - component: {fileID: 8974655883329185119}
   m_Layer: 31
-  m_Name: Testing
+  m_Name: Testing Pallete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
