@@ -1552,6 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1937655747}
+  walkSpeed: 5
 --- !u!61 &1937655746
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1597,7 +1598,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &1947666404
 GameObject:
