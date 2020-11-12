@@ -16,8 +16,12 @@ public class PlayerController : MonoBehaviour
     float horiztonalInputTime = 0;
     float verticalInputTime = 0;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        rb.position = FindObjectOfType<MazeGenerator>().GetStartingPos() + new Vector2(0.5f, 0.5f);
+    }
+
+    private void Update()
     {
         HandleMovementInput();
     }
