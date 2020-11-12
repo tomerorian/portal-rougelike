@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class MazeGenerator : MonoBehaviour
 {
     [SerializeField] Tilemap layoutTileMap = null;
-    [SerializeField] Tile tile = null;
+    [SerializeField] TileBase tile = null;
 
     void Start()
     {
