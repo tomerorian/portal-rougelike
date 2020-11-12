@@ -16,14 +16,19 @@ public class PlayerController : MonoBehaviour
     float horiztonalInputTime = 0;
     float verticalInputTime = 0;
 
+    MazeGenerator mazeGen;
+
     private void Start()
     {
-        rb.position = FindObjectOfType<MazeGenerator>().GetStartingPos();
+        mazeGen = FindObjectOfType<MazeGenerator>();
+        rb.position = mazeGen.GetStartingPos();
     }
 
     private void Update()
     {
         HandleMovementInput();
+        MazeGeneration.Cell cell = mazeGen.GetMazeCellByWorldPos(rb.position);
+        print(cell.distanceFromStart);
     }
 
     private void HandleMovementInput()

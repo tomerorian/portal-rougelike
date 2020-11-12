@@ -20,6 +20,7 @@ public class MazeGenerator : MonoBehaviour
 
     private void Awake()
     {
+        //Random.InitState(0);
         startingPos = new Vector3Int(Random.Range(0, width), Random.Range(0, height), 0);
         maze = GenerateMaze(width, height, adjacentCellChange, startingPos);
     }
@@ -42,5 +43,11 @@ public class MazeGenerator : MonoBehaviour
     public Vector2 GetStartingPos()
     {
         return layoutTileMap.GetCellCenterWorld(startingPos);
+    }
+
+    public Cell GetMazeCellByWorldPos(Vector2 pos)
+    {
+        Vector3Int cellPos = layoutTileMap.WorldToCell(pos);
+        return maze[cellPos.x, cellPos.y];
     }
 }
