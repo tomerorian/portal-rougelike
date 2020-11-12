@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.MovePosition(rb.position * 1.1f);
+        Vector2 newPos = new Vector2();
+        newPos.x = rb.position.x + (1f * Time.deltaTime);
+        newPos.y = rb.position.y + (1f * Time.deltaTime);
+        rb.MovePosition(newPos);
     }
 }
