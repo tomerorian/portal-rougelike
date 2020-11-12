@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb = null;
 
     // Update is called once per frame
     void Update()
