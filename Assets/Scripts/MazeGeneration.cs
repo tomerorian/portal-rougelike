@@ -10,6 +10,7 @@ public static class MazeGeneration
         public int y;
         public bool isPath;
         public int neighbourCount;
+        public int distanceFromStart;
 
         public Cell(int x, int y, bool isPath)
         {
@@ -17,22 +18,25 @@ public static class MazeGeneration
             this.y = y;
             this.isPath = isPath;
             this.neighbourCount = 0;
+            this.distanceFromStart = int.MaxValue;
         }
     }
 
     public static Cell[,] GenerateMaze(int width, int height, float adjCellChance)
     {
-        return GenerateMaze(width, height, adjCellChance, new Vector2Int(Random.Range(0, width), Random.Range(0, height)));
+        return GenerateMaze(width, height, adjCellChance, new Vector3Int(Random.Range(0, width), Random.Range(0, height), 0));
     }
 
-    public static Cell[,] GenerateMaze(int width, int height, float adjCellChance, Vector2Int startingCell)
+    public static Cell[,] GenerateMaze(int width, int height, float adjCellChance, Vector3Int startingCellPos)
     {
         Cell[,] maze = new Cell[width, height];
         initalizeMaze(maze);
 
         List<Cell> potentialPaths = new List<Cell>();
-        
-        potentialPaths.Add(maze[startingCell.x, startingCell.y]);
+
+        Cell startingCell = maze[startingCellPos.x, startingCellPos.y];
+        startingCell.distanceFromStart = 0;
+        potentialPaths.Add(startingCell);
 
         while (potentialPaths.Count > 0)
         {
@@ -71,28 +75,33 @@ public static class MazeGeneration
 
         if (cell.y + 1 < maze.GetLength(1))
         {
-            UpdateNeighbourCell(potentialPaths, maze[cell.x, cell.y + 1]);
+            UpdateNeighbourCell(potentialPaths, cell, maze[cell.x, cell.y + 1]);
         }
 
         if (cell.y > 0)
         {
-            UpdateNeighbourCell(potentialPaths, maze[cell.x, cell.y - 1]);
+            UpdateNeighbourCell(potentialPaths, cell, maze[cell.x, cell.y - 1]);
         }
 
         if (cell.x + 1 < maze.GetLength(0))
         {
-            UpdateNeighbourCell(potentialPaths, maze[cell.x + 1, cell.y]);
+            UpdateNeighbourCell(potentialPaths, cell, maze[cell.x + 1, cell.y]);
         }
 
         if (cell.x > 0)
         {
-            UpdateNeighbourCell(potentialPaths, maze[cell.x - 1, cell.y]);
+            UpdateNeighbourCell(potentialPaths, cell, maze[cell.x - 1, cell.y]);
         }
     }
 
-    private static void UpdateNeighbourCell(List<Cell> potentialPaths, Cell cell)
+    private static void UpdateNeighbourCell(List<Cell> potentialPaths, Cell updatingCell, Cell neighbourCell)
     {
-        cell.neighbourCount++;
-        potentialPaths.Add(cell);
+        if (updatingCell.distanceFromStart < neighbourCell.distanceFromStart)
+        {
+            neighbourCell.distanceFromStart = updatingCell.distanceFromStart + 1;
+        }
+
+        neighbourCell.neighbourCount++;
+        potentialPaths.Add(neighbourCell);
     }
 }

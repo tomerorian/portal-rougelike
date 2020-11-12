@@ -15,12 +15,12 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] int height = 50;
     [SerializeField] float adjacentCellChange = 0.06f;
 
-    Vector2Int startingPos;
+    Vector3Int startingPos;
     Cell[,] maze;
 
     private void Awake()
     {
-        startingPos = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
+        startingPos = new Vector3Int(Random.Range(0, width), Random.Range(0, height), 0);
         maze = GenerateMaze(width, height, adjacentCellChange, startingPos);
     }
 
@@ -39,8 +39,8 @@ public class MazeGenerator : MonoBehaviour
         }
     }
 
-    public Vector2Int GetStartingPos()
+    public Vector2 GetStartingPos()
     {
-        return startingPos;
+        return layoutTileMap.GetCellCenterWorld(startingPos);
     }
 }

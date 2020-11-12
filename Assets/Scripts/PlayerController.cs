@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        rb.position = FindObjectOfType<MazeGenerator>().GetStartingPos() + new Vector2(0.5f, 0.5f);
+        rb.position = FindObjectOfType<MazeGenerator>().GetStartingPos();
     }
 
     private void Update()
