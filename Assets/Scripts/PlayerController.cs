@@ -6,15 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] Rigidbody2D rb = null;
-
-    [Header("Config")]
-    [SerializeField] float walkSpeed = 5f;
-
-    Vector2 movementVector = new Vector2();
-    float horizontalInput;
-    float verticalInput;
-    float horiztonalInputTime = 0;
-    float verticalInputTime = 0;
+    [SerializeField] GridMovement movement = null;
 
     MazeGenerator mazeGen;
 
@@ -31,67 +23,21 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovementInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-        if (Mathf.Abs(horizontalInput) > 0 && horiztonalInputTime == 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            horiztonalInputTime = Time.time;
+            movement.Move(Vector2Int.up);
         }
-        else if (horizontalInput == 0)
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            horiztonalInputTime = 0;
+            movement.Move(Vector2Int.down);
         }
-
-        if (Mathf.Abs(verticalInput) > 0 && verticalInputTime == 0)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            verticalInputTime = Time.time;
+            movement.Move(Vector2Int.left);
         }
-        else if (verticalInput == 0)
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            verticalInputTime = 0;
+            movement.Move(Vector2Int.right);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        bool hasHorizontalInput = Mathf.Abs(horizontalInput) > 0;
-        bool hasVerticalInput = Mathf.Abs(verticalInput) > 0;
-
-        if (hasHorizontalInput && hasVerticalInput)
-        {
-            if (horiztonalInputTime > verticalInputTime)
-            {
-                MoveHorizontally();
-            }
-            else
-            {
-                MoveVertically();
-            }
-        }
-        else if (hasHorizontalInput)
-        {
-            MoveHorizontally();
-        }
-        else if (hasVerticalInput)
-        {
-            MoveVertically();
-        }
-    }
-
-    private void MoveVertically()
-    {
-        movementVector.x = 0;
-        movementVector.y = verticalInput;
-
-        rb.MovePosition(rb.position + (movementVector * walkSpeed * Time.fixedDeltaTime));
-    }
-
-    private void MoveHorizontally()
-    {
-        movementVector.x = horizontalInput;
-        movementVector.y = 0;
-
-        rb.MovePosition(rb.position + (movementVector * walkSpeed * Time.fixedDeltaTime));
     }
 }
