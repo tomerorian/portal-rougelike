@@ -17,13 +17,21 @@ public class Maze : MonoBehaviour
     [SerializeField] int height = 50;
     [SerializeField] float adjacentCellChance = 0.06f;
 
+    [Header("Debug")]
+    [Tooltip("Will set a forced random seed if set to anything but 0")]
+    [SerializeField] int forcedMazeSeed = 0;
+
     Vector2Int startPos;
     Cell[,] maze;
     MazePopulation mazePopulation;
 
     private void Awake()
     {
-        //Random.InitState(0);
+        if (forcedMazeSeed != 0)
+        {
+            Random.InitState(forcedMazeSeed);
+        }
+        
         startPos = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
         maze = GenerateMaze(width, height, adjacentCellChance, startPos);
 
