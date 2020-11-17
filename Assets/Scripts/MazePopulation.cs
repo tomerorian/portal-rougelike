@@ -12,7 +12,7 @@ public class MazePopulation
     Vector2Int startPos;
     int maxDistanceFromStart;
 
-    public Vector2Int exitPos { get; private set; }
+    public Vector2Int ExitPos { get; private set; }
 
     public MazePopulation(Cell[,] maze, Vector2Int startPos)
     {
@@ -69,7 +69,7 @@ public class MazePopulation
         }
 
         Cell exitCell = exitOptions[Random.Range(0, exitOptions.Count)];
-        exitPos = new Vector2Int(exitCell.x, exitCell.y);
+        ExitPos = new Vector2Int(exitCell.x, exitCell.y);
     }
 
     private int CountAdjcentPaths(Cell cell)

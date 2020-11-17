@@ -60,7 +60,7 @@ public class Maze : MonoBehaviour
 
     private void CreateExit()
     {
-        Instantiate(exitPrefab, MazeToWorldPos(mazePopulation.exitPos), Quaternion.identity);
+        Instantiate(exitPrefab, MazeToWorldPos(mazePopulation.ExitPos), Quaternion.identity);
     }
 
     public Vector2Int GetStartPos()
