@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Level : MonoBehaviour
 {
@@ -19,6 +20,6 @@ public class Level : MonoBehaviour
 
     public void OnPlayerReachExit()
     {
-        print("EXIT!");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
