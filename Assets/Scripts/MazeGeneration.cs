@@ -26,10 +26,10 @@ public static class MazeGeneration
 
     public static Cell[,] GenerateMaze(int width, int height, float adjCellChance)
     {
-        return GenerateMaze(width, height, adjCellChance, new Vector3Int(Random.Range(0, width), Random.Range(0, height), 0));
+        return GenerateMaze(width, height, adjCellChance, new Vector2Int(Random.Range(0, width), Random.Range(0, height)));
     }
 
-    public static Cell[,] GenerateMaze(int width, int height, float adjCellChance, Vector3Int startingCellPos)
+    public static Cell[,] GenerateMaze(int width, int height, float adjCellChance, Vector2Int startingCellPos)
     {
         Cell[,] maze = new Cell[width, height];
         initalizeMaze(maze);

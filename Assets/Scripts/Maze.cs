@@ -15,13 +15,13 @@ public class Maze : MonoBehaviour
     [SerializeField] int height = 50;
     [SerializeField] float adjacentCellChance = 0.06f;
 
-    Vector3Int startingPos;
+    Vector2Int startingPos;
     Cell[,] maze;
 
     private void Awake()
     {
         //Random.InitState(0);
-        startingPos = new Vector3Int(Random.Range(0, width), Random.Range(0, height), 0);
+        startingPos = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
         maze = GenerateMaze(width, height, adjacentCellChance, startingPos);
     }
 
@@ -40,14 +40,8 @@ public class Maze : MonoBehaviour
         }
     }
 
-    public Vector2 GetStartingPos()
+    public Vector2Int GetStartingPos()
     {
-        return layoutTileMap.GetCellCenterWorld(startingPos);
-    }
-
-    public Cell GetMazeCellByWorldPos(Vector2 pos)
-    {
-        Vector3Int cellPos = layoutTileMap.WorldToCell(pos);
-        return maze[cellPos.x, cellPos.y];
+        return startingPos;
     }
 }
