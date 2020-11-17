@@ -13,7 +13,7 @@ public class MazeGenerator : MonoBehaviour
     [Header("Config")]
     [SerializeField] int width = 50;
     [SerializeField] int height = 50;
-    [SerializeField] float adjacentCellChange = 0.06f;
+    [SerializeField] float adjacentCellChance = 0.06f;
 
     Vector3Int startingPos;
     Cell[,] maze;
@@ -22,7 +22,7 @@ public class MazeGenerator : MonoBehaviour
     {
         //Random.InitState(0);
         startingPos = new Vector3Int(Random.Range(0, width), Random.Range(0, height), 0);
-        maze = GenerateMaze(width, height, adjacentCellChange, startingPos);
+        maze = GenerateMaze(width, height, adjacentCellChance, startingPos);
     }
 
     private void Start()
