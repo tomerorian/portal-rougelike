@@ -17,18 +17,22 @@ public class Maze : MonoBehaviour
     [SerializeField] int height = 50;
     [SerializeField] float adjacentCellChance = 0.06f;
 
-    Vector2Int startingPos;
+    Vector2Int startPos;
     Cell[,] maze;
+    MazePopulation mazePopulation;
 
     private void Awake()
     {
         //Random.InitState(0);
-        startingPos = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
-        maze = GenerateMaze(width, height, adjacentCellChance, startingPos);
+        startPos = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
+        maze = GenerateMaze(width, height, adjacentCellChance, startPos);
+
+        mazePopulation = new MazePopulation(maze, startPos);
     }
 
     private void Start()
     {
+        mazePopulation.PopulateMaze();
         SetTiles();
         CreateEntrance();
         CreateExit();
@@ -51,18 +55,17 @@ public class Maze : MonoBehaviour
 
     private void CreateEntrance()
     {
-        Instantiate(entrancePrefab, MazeToWorldPos(startingPos), Quaternion.identity);
+        Instantiate(entrancePrefab, MazeToWorldPos(startPos), Quaternion.identity);
     }
 
     private void CreateExit()
     {
-        // TODO: "Generate" exist position and place it there
-        Instantiate(exitPrefab, MazeToWorldPos(startingPos + Vector2Int.up), Quaternion.identity);
+        Instantiate(exitPrefab, MazeToWorldPos(mazePopulation.exitPos), Quaternion.identity);
     }
 
-    public Vector2Int GetStartingPos()
+    public Vector2Int GetStartPos()
     {
-        return startingPos;
+        return startPos;
     }
 
     public Vector2 MazeToWorldPos(Vector2Int pos)

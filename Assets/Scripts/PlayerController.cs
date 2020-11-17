@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         maze = FindObjectOfType<Maze>();
-        rb.position = maze.MazeToWorldPos(maze.GetStartingPos());
+        rb.position = maze.MazeToWorldPos(maze.GetStartPos());
     }
 
     private void Update()
