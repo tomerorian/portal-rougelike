@@ -8,11 +8,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] GridMovement movement = null;
 
-    MazeGenerator mazeGen;
+    Maze mazeGen;
 
     private void Start()
     {
-        mazeGen = FindObjectOfType<MazeGenerator>();
+        mazeGen = FindObjectOfType<Maze>();
         rb.position = mazeGen.GetStartingPos();
     }
 

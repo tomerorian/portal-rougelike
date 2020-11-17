@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using static MazeGeneration;
 
-public class MazeGenerator : MonoBehaviour
+public class Maze : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] Tilemap layoutTileMap = null;
