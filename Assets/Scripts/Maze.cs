@@ -52,6 +52,11 @@ public class Maze : MonoBehaviour
 
     public bool CanMoveTo(Vector2Int pos)
     {
+        if (pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height)
+        { 
+            return false;
+        }
+
         return maze[pos.x, pos.y].isPath;
     }
 }
