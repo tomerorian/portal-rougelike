@@ -53,8 +53,14 @@ public class MazePopulation
         }
     }
 
-    private void PlaceExit()
+    private void PlaceExit(int maxAdjcentCells = 1)
     {
+        if (maxAdjcentCells > 4)
+        {
+            Debug.LogError("Couldn't place exit after 4 tries");
+            return;
+        }
+
         int minDistanceForExit = maxDistanceFromStart - EXIT_DISTANCE_GAP_FROM_MAX;
 
         List<Cell> exitOptions = new List<Cell>();
@@ -62,14 +68,21 @@ public class MazePopulation
         foreach (Cell cell in mazePath)
         {
             if (cell.distanceFromStart >= minDistanceForExit &&
-                CountAdjcentPaths(cell) == 1)
+                CountAdjcentPaths(cell) <= maxAdjcentCells)
             {
                 exitOptions.Add(cell);
             }
         }
 
-        Cell exitCell = exitOptions[Random.Range(0, exitOptions.Count)];
-        ExitPos = new Vector2Int(exitCell.x, exitCell.y);
+        if (exitOptions.Count == 0)
+        {
+            PlaceExit(maxAdjcentCells + 1);
+        }
+        else
+        {
+            Cell exitCell = exitOptions[Random.Range(0, exitOptions.Count)];
+            ExitPos = new Vector2Int(exitCell.x, exitCell.y);
+        }
     }
 
     private int CountAdjcentPaths(Cell cell)
