@@ -44,4 +44,14 @@ public class Maze : MonoBehaviour
     {
         return startingPos;
     }
+
+    public Vector2 MazeToWorldPos(Vector2Int pos)
+    {
+        return layoutTileMap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
+    }
+
+    public bool CanMoveTo(Vector2Int pos)
+    {
+        return maze[pos.x, pos.y].isPath;
+    }
 }
