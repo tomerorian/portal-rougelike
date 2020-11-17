@@ -9,6 +9,8 @@ public class Maze : MonoBehaviour
     [Header("Refs")]
     [SerializeField] Tilemap layoutTileMap = null;
     [SerializeField] TileBase tile = null;
+    [SerializeField] GameObject entrancePrefab = null;
+    [SerializeField] GameObject exitPrefab = null;
 
     [Header("Config")]
     [SerializeField] int width = 50;
@@ -27,6 +29,13 @@ public class Maze : MonoBehaviour
 
     private void Start()
     {
+        SetTiles();
+        CreateEntrance();
+        CreateExit();
+    }
+
+    private void SetTiles()
+    {
         Vector3Int pos = new Vector3Int(0, 0, 0);
 
         foreach (Cell cell in maze)
@@ -38,6 +47,17 @@ public class Maze : MonoBehaviour
                 layoutTileMap.SetTile(pos, tile);
             }
         }
+    }
+
+    private void CreateEntrance()
+    {
+        Instantiate(entrancePrefab, MazeToWorldPos(startingPos), Quaternion.identity);
+    }
+
+    private void CreateExit()
+    {
+        // TODO: "Generate" exist position and place it there
+        Instantiate(exitPrefab, MazeToWorldPos(startingPos + Vector2Int.up), Quaternion.identity);
     }
 
     public Vector2Int GetStartingPos()

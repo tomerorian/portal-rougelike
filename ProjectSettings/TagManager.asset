@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Maze
+    uniqueID: 1224807167
+    locked: 0
+  - name: Object
+    uniqueID: 1097150745
+    locked: 0
+  - name: Enemy
+    uniqueID: 2735331253
+    locked: 0
+  - name: Player
+    uniqueID: 1148856353
+    locked: 0
