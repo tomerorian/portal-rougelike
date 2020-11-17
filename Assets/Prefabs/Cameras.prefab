@@ -139,10 +139,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -14.0347185, y: 9.942177}
-      - {x: -14.23336, y: -6.949032}
-      - {x: 18.15045, y: -7.194589}
-      - {x: 18.82602, y: 9.886417}
+    - - {x: -23.288637, y: 14.9100685}
+      - {x: -25.191946, y: -12.696201}
+      - {x: 23.41057, y: -12.698235}
+      - {x: 21.748304, y: 15.195245}
 --- !u!1 &4274816920873231705
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4274816920873231705}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
   m_Name: 
