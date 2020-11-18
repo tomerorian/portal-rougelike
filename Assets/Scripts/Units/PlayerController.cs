@@ -11,6 +11,8 @@ public class PlayerController : MazeUnit
         level = Level.Instance;
 
         movement.MoveToMazePosition(Maze.Instance.GetStartPos());
+
+        GetComponent<Health>().onDeath += OnDeath;
     }
 
     private void Update()
@@ -44,5 +46,10 @@ public class PlayerController : MazeUnit
         }
 
         return false;
+    }
+
+    private void OnDeath()
+    {
+        GameSession.Instance.OnPlayerDeath();
     }
 }
