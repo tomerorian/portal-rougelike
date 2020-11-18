@@ -7,7 +7,7 @@ public class MazeMovement : GridMovement
     Maze maze = null;
 
     [Header("Config")]
-    [SerializeField] LayerMask blockingLayers;
+    [SerializeField] LayerMask blockingLayers = 0;
 
 
     private void Start()
