@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,12 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 {
     [Header("Config")]
     [SerializeField] LayerMask enemyLayers = 0;
+    [SerializeField] int attackDamage = 1;
+
+    protected override TurnBasedUnit.BehaviourPriority GetPriority()
+    {
+        return TurnBasedUnit.BehaviourPriority.ACTION;
+    }
 
     public override IEnumerator TakeTurn()
     {
@@ -16,7 +23,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
         if (IsTargetValid(possibleTarget))
         {
-            Debug.Log("Attacking: " + possibleTarget.name);
+            Attack(possibleTarget);
             yield return null;
         }
 
@@ -24,7 +31,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
         if (IsTargetValid(possibleTarget))
         {
-            Debug.Log("Attacking: " + possibleTarget.name);
+            Attack(possibleTarget);
             yield return null;
         }
 
@@ -32,7 +39,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
         if (IsTargetValid(possibleTarget))
         {
-            Debug.Log("Attacking: " + possibleTarget.name);
+            Attack(possibleTarget);
             yield return null;
         }
 
@@ -40,7 +47,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
         if (IsTargetValid(possibleTarget))
         {
-            Debug.Log("Attacking: " + possibleTarget.name);
+            Attack(possibleTarget);
             yield return null;
         }
     }
@@ -50,8 +57,16 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
         return target != null && (enemyLayers == (enemyLayers | (1 << target.gameObject.layer)));
     }
 
-    protected override TurnBasedUnit.BehaviourPriority GetPriority()
+    private void Attack(MazeUnit possibleTarget)
     {
-        return TurnBasedUnit.BehaviourPriority.ACTION;
+        Health targetHealth = possibleTarget.GetComponent<Health>();
+        
+        if (!targetHealth)
+        {
+            Debug.LogError(gameObject.name + " is trying to attack a target with no Health: " + possibleTarget.name);
+            return;
+        }
+
+        targetHealth.TakeDamage(attackDamage);
     }
 }

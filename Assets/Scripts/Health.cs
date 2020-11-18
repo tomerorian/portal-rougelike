@@ -13,7 +13,8 @@ public class Health : MonoBehaviour
     [Header("Config")]
     [SerializeField] int maxHealth = 1;
 
-    int currentHealth;
+    [Header("Debug View")]
+    [SerializeField] int currentHealth;
 
     private void Start()
     {

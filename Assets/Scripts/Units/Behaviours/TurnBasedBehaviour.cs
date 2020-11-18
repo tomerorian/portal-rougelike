@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class TurnBasedBehaviour : MonoBehaviour
 {
-    public abstract IEnumerator TakeTurn();
     protected abstract TurnBasedUnit.BehaviourPriority GetPriority();
+    public abstract IEnumerator TakeTurn();
 
     protected TurnBasedUnit unit;
 
