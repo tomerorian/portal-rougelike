@@ -23,6 +23,12 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
 
         if (enemy)
         {
+            List<Vector2Int> path = AStar.FindPath(
+                Maze.Instance, 
+                unit.GetMovement().GetMazePos(), 
+                enemy.GetMovement().GetMazePos(), 
+                Maze.Instance.GetValidNeighbourCoords(enemy.GetMovement().GetMazePos()));
+
             // TODO: Attack enemy
             print("Found enemy! " + enemy.name);
             DidAction = true;

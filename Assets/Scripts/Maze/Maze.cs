@@ -167,4 +167,35 @@ public class Maze : MonoBehaviour
     {
         return pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height;
     }
+
+    public List<Vector2Int> GetValidNeighbourCoords(Vector2Int pos)
+    {
+        List<Vector2Int> validNeighbours = new List<Vector2Int>();
+
+        Vector2Int possibleNeighbour = pos + Vector2Int.up;
+        if (CanMoveTo(possibleNeighbour))
+        {
+            validNeighbours.Add(possibleNeighbour);
+        }
+
+        possibleNeighbour = pos + Vector2Int.down;
+        if (CanMoveTo(possibleNeighbour))
+        {
+            validNeighbours.Add(possibleNeighbour);
+        }
+
+        possibleNeighbour = pos + Vector2Int.left;
+        if (CanMoveTo(possibleNeighbour))
+        {
+            validNeighbours.Add(possibleNeighbour);
+        }
+
+        possibleNeighbour = pos + Vector2Int.right;
+        if (CanMoveTo(possibleNeighbour))
+        {
+            validNeighbours.Add(possibleNeighbour);
+        }
+
+        return validNeighbours;
+    }
 }
