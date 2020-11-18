@@ -10,8 +10,10 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
     [SerializeField] LayerMask enemyLayers = 0;
     [SerializeField] LayerMask visiionBlockingLayers = 0;
     [SerializeField] int pursuitSteps = 5;
+    [SerializeField] float turnsPerMove = 2;
 
     MazeUnit target = null;
+    int turnsSinceLastMove = -1;
 
     protected override TurnBasedUnit.BehaviourPriority GetPriority()
     {
@@ -22,9 +24,20 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
     {
         DidAction = false;
 
+        if (turnsSinceLastMove != -1)
+        {
+            turnsSinceLastMove++;
+        }
+
+        // Stil lock on targets even if we can't move right now
         if (!target)
         {
             target = FindVisibleEnemy();
+        }
+
+        if (turnsSinceLastMove != -1 && turnsSinceLastMove < turnsPerMove)
+        {
+            yield break;
         }
 
         if (target)
@@ -43,6 +56,7 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
 
             if (path.Count >= 1 && unit.GetMovement().AttemptMoveToPos(path[1]))
             {
+                turnsSinceLastMove = 0;
                 DidAction = true;
             }
         }

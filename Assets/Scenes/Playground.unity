@@ -350,6 +350,8 @@ MonoBehaviour:
   visiionBlockingLayers:
     serializedVersion: 2
     m_Bits: 1024
+  pursuitSteps: 5
+  turnsPerMove: 2
 --- !u!1 &2046967628
 GameObject:
   m_ObjectHideFlags: 0
