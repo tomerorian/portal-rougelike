@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5037720154662771990}
   - component: {fileID: 5037720154662771991}
   - component: {fileID: 5037720154662771976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Layout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,3 +369,4 @@ MonoBehaviour:
   width: 20
   height: 20
   adjacentCellChance: 0.06
+  forcedMazeSeed: 0
