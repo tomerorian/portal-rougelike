@@ -120,7 +120,17 @@ public class Maze : MonoBehaviour
             return false;
         }
 
-        return maze[pos.x, pos.y].isPath;
+        if (!maze[pos.x, pos.y].isPath)
+        {
+            return false;
+        }
+
+        if (mazeData[pos.x, pos.y].occupant != null && mazeData[pos.x, pos.y].occupant != this)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public void MoveUnitTo(MazeUnit unit, Vector2Int pos)

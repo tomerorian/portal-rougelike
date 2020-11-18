@@ -8,6 +8,11 @@ public class MazeUnit : MonoBehaviour
 
     Vector2Int mazePos;
 
+    private void Start()
+    {
+        movement.MoveToMazePosition(this, Maze.Instance.WorldToMazePos(transform.position));
+    }
+
     public Vector2Int GetMazePos()
     {
         return mazePos;
