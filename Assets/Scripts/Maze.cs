@@ -6,6 +6,8 @@ using static MazeGeneration;
 
 public class Maze : MonoBehaviour
 {
+    public static Maze Instance { get; private set; }
+
     [Header("Refs")]
     [SerializeField] Tilemap layoutTileMap = null;
     [SerializeField] TileBase tile = null;
@@ -28,6 +30,8 @@ public class Maze : MonoBehaviour
 
     private void Awake()
     {
+        CreateSingleton();
+
         if (forcedMazeSeed != 0)
         {
             Random.InitState(forcedMazeSeed);
@@ -37,6 +41,17 @@ public class Maze : MonoBehaviour
         maze = GenerateMaze(width, height, adjacentCellChance, startPos);
 
         mazePopulation = new MazePopulation(maze, startPos);
+    }
+
+    private void CreateSingleton()
+    {
+        if (Instance && Instance != this)
+        {
+            Debug.LogError("Found more than one MAze script instances");
+            Destroy(gameObject);
+        }
+
+        Instance = this;
     }
 
     private void Start()

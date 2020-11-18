@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class GridMovement : MonoBehaviour
 {
-    [SerializeField] Grid grid = null;
-    [SerializeField] Rigidbody2D rb = null;
+    [SerializeField] protected Grid grid = null;
+    [SerializeField] protected new Rigidbody2D rigidbody = null;
 
     // TODO: Remove? (not using this for now)
     private void AdjustToGrid()
@@ -16,7 +16,7 @@ public class GridMovement : MonoBehaviour
 
     public void Move(Vector2Int direction)
     {
-        rb.MovePosition(new Vector2(transform.position.x + direction.x, transform.position.y + direction.y));
+        rigidbody.MovePosition(new Vector2(transform.position.x + direction.x, transform.position.y + direction.y));
     }
 
     public Vector2Int GetPosition()

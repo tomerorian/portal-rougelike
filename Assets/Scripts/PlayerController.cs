@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] Rigidbody2D rb = null;
-    [SerializeField] GridMovement movement = null;
+    [SerializeField] MazeMovement movement = null;
 
     Maze maze;
 
@@ -25,27 +25,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            AttemptMove(Vector2Int.up);
+            movement.AttemptMove(Vector2Int.up);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            AttemptMove(Vector2Int.down);
+            movement.AttemptMove(Vector2Int.down);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            AttemptMove(Vector2Int.left);
+            movement.AttemptMove(Vector2Int.left);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            AttemptMove(Vector2Int.right);
-        }
-    }
-
-    private void AttemptMove(Vector2Int direction)
-    {
-        if (maze.CanMoveTo(movement.GetPosition() + direction))
-        {
-            movement.Move(direction);
+            movement.AttemptMove(Vector2Int.right);
         }
     }
 }

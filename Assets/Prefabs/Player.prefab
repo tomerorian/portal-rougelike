@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2857181236170948647}
   - component: {fileID: 2857181236170948646}
   - component: {fileID: 2857181236170948645}
-  - component: {fileID: 2857181236170948640}
-  m_Layer: 0
+  - component: {fileID: 979798274416396750}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2857181236170948647}
-  movement: {fileID: 2857181236170948640}
---- !u!114 &2857181236170948640
+  movement: {fileID: 0}
+--- !u!114 &979798274416396750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,11 +105,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2857181236170948699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91dd986e46a1f9c4c98e8b96dc4e2603, type: 3}
+  m_Script: {fileID: 11500000, guid: 40d440fe2794af74e9a54292e9e74c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
-  rb: {fileID: 2857181236170948647}
+  rigidbody: {fileID: 2857181236170948647}
 --- !u!1 &2857181236282572800
 GameObject:
   m_ObjectHideFlags: 0
