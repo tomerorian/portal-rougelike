@@ -11,7 +11,7 @@ public class MazeUnit : MonoBehaviour
         movement.Init(this);
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         movement.MoveToMazePosition(Maze.Instance.WorldToMazePos(transform.position));
     }

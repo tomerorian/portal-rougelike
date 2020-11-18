@@ -6,8 +6,10 @@ public abstract class TurnBasedUnit : MazeUnit
 {
     public abstract IEnumerator TakeTurn();
 
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
+
         Level.Instance.AddUnit(this);
     }
 
