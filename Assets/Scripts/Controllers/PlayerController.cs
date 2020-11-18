@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MazeUnit
 {
-    [Header("Refs")]
-    [SerializeField] Rigidbody2D rb = null;
-    [SerializeField] MazeMovement movement = null;
-
     Level level;
 
     private void Start()
     {
         level = Level.Instance;
 
-        rb.position = Maze.Instance.MazeToWorldPos(Maze.Instance.GetStartPos());
+        movement.SetPosition(Maze.Instance.GetStartPos());
     }
 
     private void Update()
@@ -32,19 +28,19 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            return movement.AttemptMove(Vector2Int.up);
+            return movement.AttemptMove(this, Vector2Int.up);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            return movement.AttemptMove(Vector2Int.down);
+            return movement.AttemptMove(this, Vector2Int.down);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            return movement.AttemptMove(Vector2Int.left);
+            return movement.AttemptMove(this, Vector2Int.left);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            return movement.AttemptMove(Vector2Int.right);
+            return movement.AttemptMove(this, Vector2Int.right);
         }
 
         return false;

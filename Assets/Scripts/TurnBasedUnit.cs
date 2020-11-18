@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TurnBasedUnit : MonoBehaviour
+public abstract class TurnBasedUnit : MazeUnit
 {
     public abstract IEnumerator TakeTurn();
 

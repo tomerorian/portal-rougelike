@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class RandomMovement : TurnBasedUnit
 {
-    [Header("Refs")]
-    [SerializeField] MazeMovement movement = null;
-
     public override IEnumerator TakeTurn()
     {
         int randomDirection = Random.Range(0, 4);
@@ -15,22 +12,22 @@ public class RandomMovement : TurnBasedUnit
         {
             case 0:
                 {
-                    movement.AttemptMove(Vector2Int.up);
+                    movement.AttemptMove(this, Vector2Int.up);
                     break;
                 }
             case 1:
                 {
-                    movement.AttemptMove(Vector2Int.down);
+                    movement.AttemptMove(this, Vector2Int.down);
                     break;
                 }
             case 2:
                 {
-                    movement.AttemptMove(Vector2Int.left);
+                    movement.AttemptMove(this, Vector2Int.left);
                     break;
                 }
             case 3:
                 {
-                    movement.AttemptMove(Vector2Int.right);
+                    movement.AttemptMove(this, Vector2Int.right);
                     break;
                 }
         }

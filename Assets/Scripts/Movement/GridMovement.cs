@@ -14,9 +14,9 @@ public class GridMovement : MonoBehaviour
         transform.position = grid.GetCellCenterWorld(grid.WorldToCell(transform.position));
     }
 
-    public void Move(Vector2Int direction)
+    public void SetPosition(Vector2Int position)
     {
-        rigidbody.MovePosition(new Vector2(transform.position.x + direction.x, transform.position.y + direction.y));
+        transform.position = grid.GetCellCenterWorld(new Vector3Int(position.x, position.y, 0));
     }
 
     public Vector2Int GetPosition()

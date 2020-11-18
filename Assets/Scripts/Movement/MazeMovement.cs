@@ -15,7 +15,7 @@ public class MazeMovement : GridMovement
         maze = Maze.Instance;
     }
 
-    public bool AttemptMove(Vector2Int direction)
+    public bool AttemptMove(MazeUnit unit, Vector2Int direction)
     {
         Vector2Int targetPos = GetPosition() + direction;
 
@@ -23,9 +23,16 @@ public class MazeMovement : GridMovement
 
         if (IsSomethingBlocking(direction)) { return false; }
 
-        Move(direction);
+        SetMazePosition(unit, targetPos);
 
         return true;
+    }
+
+    public void SetMazePosition(MazeUnit unit, Vector2Int pos)
+    {
+        maze.MoveUnitTo(unit, pos);
+        unit.SetMazePos(pos);
+        SetPosition(pos);
     }
 
     private bool IsSomethingBlocking(Vector2Int direction)

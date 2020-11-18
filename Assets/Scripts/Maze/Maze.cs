@@ -26,6 +26,7 @@ public class Maze : MonoBehaviour
 
     Vector2Int startPos;
     Cell[,] maze;
+    CellData[,] mazeData;
     MazePopulator mazePopulator;
 
     private void Awake()
@@ -39,6 +40,15 @@ public class Maze : MonoBehaviour
         
         startPos = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
         maze = GenerateMaze(width, height, adjacentCellChance, startPos);
+        mazeData = new CellData[width, height];
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                mazeData[x, y] = new CellData();
+            }
+        }
 
         mazePopulator = new MazePopulator(maze, startPos);
     }
@@ -97,6 +107,12 @@ public class Maze : MonoBehaviour
         return layoutTileMap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
     }
 
+    public Vector2Int WorldToMazePos(Vector2 pos)
+    {
+        Vector3Int mazePos = layoutTileMap.WorldToCell(new Vector3(pos.x, pos.y, 0));
+        return new Vector2Int(mazePos.x, mazePos.y);
+    }
+
     public bool CanMoveTo(Vector2Int pos)
     {
         if (pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height)
@@ -105,5 +121,19 @@ public class Maze : MonoBehaviour
         }
 
         return maze[pos.x, pos.y].isPath;
+    }
+
+    public void MoveUnitTo(MazeUnit unit, Vector2Int pos)
+    {
+        CellData cellData = mazeData[pos.x, pos.y];
+
+        if (cellData.occupant != null && cellData.occupant != unit)
+        {
+            Debug.LogError("Trying to move unit to occupied space");
+            return;
+        }
+
+        mazeData[unit.GetMazePos().x, unit.GetMazePos().y].occupant = null;
+        cellData.occupant = unit;
     }
 }
