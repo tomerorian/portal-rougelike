@@ -294,11 +294,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1457129098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e324995647536a4b8ba606dd25d0644, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d7a54c6dfd852441a29b271d615113f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallbackMovement: {fileID: 0}
-  visionRange: 5
 --- !u!114 &1457129103
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,27 +12,27 @@ public class RandomMovement : TurnBasedBehaviour
         {
             case 0:
                 {
-                    unit.GetMovement().AttemptMove(Vector2Int.up);
+                    DidAction = unit.GetMovement().AttemptMove(Vector2Int.up);
                     break;
                 }
             case 1:
                 {
-                    unit.GetMovement().AttemptMove(Vector2Int.down);
+                    DidAction = unit.GetMovement().AttemptMove(Vector2Int.down);
                     break;
                 }
             case 2:
                 {
-                    unit.GetMovement().AttemptMove(Vector2Int.left);
+                    DidAction = unit.GetMovement().AttemptMove(Vector2Int.left);
                     break;
                 }
             case 3:
                 {
-                    unit.GetMovement().AttemptMove(Vector2Int.right);
+                    DidAction = unit.GetMovement().AttemptMove(Vector2Int.right);
                     break;
                 }
         }
 
-        yield return null;
+        yield break;
     }
 
     protected override TurnBasedUnit.BehaviourPriority GetPriority()

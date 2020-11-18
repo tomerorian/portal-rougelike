@@ -15,12 +15,14 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
 
     public override IEnumerator TakeTurn()
     {
+        DidAction = false;
+
         MazeUnit enemy = FindVisibleEnemy();
 
         if (enemy)
         {
             // TODO: Attack enemy
-            yield return null;
+            yield break;
         }
     }
 

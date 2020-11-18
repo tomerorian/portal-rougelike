@@ -16,6 +16,8 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
     public override IEnumerator TakeTurn()
     {
+        DidAction = false;
+
         MazeMovement unitMovement = unit.GetMovement();
         Maze maze = Maze.Instance;
 
@@ -24,7 +26,8 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
         if (IsTargetValid(possibleTarget))
         {
             Attack(possibleTarget);
-            yield return null;
+            DidAction = true;
+            yield break;
         }
 
         possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.right);
@@ -32,7 +35,8 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
         if (IsTargetValid(possibleTarget))
         {
             Attack(possibleTarget);
-            yield return null;
+            DidAction = true;
+            yield break;
         }
 
         possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.down);
@@ -40,7 +44,8 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
         if (IsTargetValid(possibleTarget))
         {
             Attack(possibleTarget);
-            yield return null;
+            DidAction = true;
+            yield break;
         }
 
         possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.left);
@@ -48,7 +53,8 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
         if (IsTargetValid(possibleTarget))
         {
             Attack(possibleTarget);
-            yield return null;
+            DidAction = true;
+            yield break;
         }
     }
 

@@ -7,6 +7,8 @@ public abstract class TurnBasedBehaviour : MonoBehaviour
     protected abstract TurnBasedUnit.BehaviourPriority GetPriority();
     public abstract IEnumerator TakeTurn();
 
+    public bool DidAction { get; protected set; }
+
     protected TurnBasedUnit unit;
 
     private void Awake()

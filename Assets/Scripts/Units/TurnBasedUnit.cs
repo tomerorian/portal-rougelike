@@ -22,6 +22,11 @@ public class TurnBasedUnit : MazeUnit
                 foreach (var behaviour in behavioursByPriority[enumValue])
                 {
                     yield return behaviour.TakeTurn();
+
+                    if (behaviour.DidAction)
+                    {
+                        yield break;
+                    }
                 }
             }
         }
