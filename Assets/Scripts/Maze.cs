@@ -15,7 +15,7 @@ public class Maze : MonoBehaviour
     [Header("Config")]
     [SerializeField] int width = 50;
     [SerializeField] int height = 50;
-    [Range(0f, 0.1f)]
+    [Range(0f, 0.2f)]
     [SerializeField] float adjacentCellChance = 0.06f;
 
     [Header("Debug")]
