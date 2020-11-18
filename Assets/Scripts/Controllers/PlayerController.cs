@@ -6,7 +6,7 @@ public class PlayerController : MazeUnit
 {
     Level level;
 
-    private void Start()
+    protected override void Start()
     {
         level = Level.Instance;
 
