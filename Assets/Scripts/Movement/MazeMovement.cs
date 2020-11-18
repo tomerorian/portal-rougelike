@@ -9,6 +9,7 @@ public class MazeMovement : GridMovement
     [Header("Config")]
     [SerializeField] LayerMask blockingLayers = 0;
 
+    Vector2Int mazePos;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class MazeMovement : GridMovement
 
     public bool AttemptMove(MazeUnit unit, Vector2Int direction)
     {
-        Vector2Int targetPos = GetPosition() + direction;
+        Vector2Int targetPos = mazePos + direction;
 
         if (!maze.CanMoveTo(targetPos)) { return false; }
 
@@ -28,8 +29,18 @@ public class MazeMovement : GridMovement
 
     public void MoveToMazePosition(MazeUnit unit, Vector2Int pos)
     {
+        mazePos = pos;
         maze.MoveUnitTo(unit, pos);
-        unit.SetMazePos(pos);
-        SetPosition(pos);
+        SetWorldPositionByGrid(pos);
+    }
+
+    public Vector2Int GetMazePos()
+    {
+        return mazePos;
+    }
+
+    public void SetMazePos(Vector2Int pos)
+    {
+        mazePos = pos;
     }
 }

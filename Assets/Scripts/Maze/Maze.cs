@@ -143,7 +143,7 @@ public class Maze : MonoBehaviour
             return;
         }
 
-        mazeData[unit.GetMazePos().x, unit.GetMazePos().y].occupant = null;
+        mazeData[unit.GetMovement().GetMazePos().x, unit.GetMovement().GetMazePos().y].occupant = null;
         cellData.occupant = unit;
     }
 }
