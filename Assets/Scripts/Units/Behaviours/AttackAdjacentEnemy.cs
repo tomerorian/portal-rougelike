@@ -19,7 +19,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
         MazeMovement unitMovement = unit.GetMovement();
         Maze maze = Maze.Instance;
 
-        MazeUnit possibleTarget = maze.GetCellData(unitMovement.GetMazePos() + Vector2Int.up).occupant;
+        MazeUnit possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.up);
 
         if (IsTargetValid(possibleTarget))
         {
@@ -27,7 +27,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
             yield return null;
         }
 
-        possibleTarget = maze.GetCellData(unitMovement.GetMazePos() + Vector2Int.right).occupant;
+        possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.right);
 
         if (IsTargetValid(possibleTarget))
         {
@@ -35,7 +35,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
             yield return null;
         }
 
-        possibleTarget = maze.GetCellData(unitMovement.GetMazePos() + Vector2Int.down).occupant;
+        possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.down);
 
         if (IsTargetValid(possibleTarget))
         {
@@ -43,7 +43,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
             yield return null;
         }
 
-        possibleTarget = maze.GetCellData(unitMovement.GetMazePos() + Vector2Int.left).occupant;
+        possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.left);
 
         if (IsTargetValid(possibleTarget))
         {

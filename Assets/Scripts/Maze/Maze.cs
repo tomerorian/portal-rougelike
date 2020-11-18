@@ -115,7 +115,7 @@ public class Maze : MonoBehaviour
 
     public bool CanMoveTo(Vector2Int pos)
     {
-        if (pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height)
+        if (IsPosOutOfBounds(pos))
         { 
             return false;
         }
@@ -135,11 +135,16 @@ public class Maze : MonoBehaviour
 
     public void MoveUnitTo(MazeUnit unit, Vector2Int pos)
     {
+        if (IsPosOutOfBounds(pos))
+        {
+            Debug.LogError(unit.name + ": Trying to move out of bounds");
+        }
+
         CellData cellData = mazeData[pos.x, pos.y];
 
         if (cellData.occupant != null && cellData.occupant != unit)
         {
-            Debug.LogError("Trying to move unit to occupied space");
+            Debug.LogError(unit.name + ": Trying to move unit to occupied space");
             return;
         }
 
@@ -147,8 +152,18 @@ public class Maze : MonoBehaviour
         cellData.occupant = unit;
     }
 
-    public CellData GetCellData(Vector2Int pos)
+    public MazeUnit GetOccupant(Vector2Int pos)
     {
-        return mazeData[pos.x, pos.y];
+        if (IsPosOutOfBounds(pos))
+        {
+            return null;
+        }
+
+        return mazeData[pos.x, pos.y].occupant;
+    }
+
+    private bool IsPosOutOfBounds(Vector2Int pos)
+    {
+        return pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height;
     }
 }
