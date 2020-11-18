@@ -28,19 +28,19 @@ public class PlayerController : MazeUnit
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            return movement.AttemptMove(this, Vector2Int.up);
+            return movement.AttemptMove(Vector2Int.up);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            return movement.AttemptMove(this, Vector2Int.down);
+            return movement.AttemptMove(Vector2Int.down);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            return movement.AttemptMove(this, Vector2Int.left);
+            return movement.AttemptMove(Vector2Int.left);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            return movement.AttemptMove(this, Vector2Int.right);
+            return movement.AttemptMove(Vector2Int.right);
         }
 
         return false;

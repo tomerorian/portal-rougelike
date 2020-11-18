@@ -12,22 +12,22 @@ public class RandomMovement : TurnBasedUnit
         {
             case 0:
                 {
-                    movement.AttemptMove(this, Vector2Int.up);
+                    movement.AttemptMove(Vector2Int.up);
                     break;
                 }
             case 1:
                 {
-                    movement.AttemptMove(this, Vector2Int.down);
+                    movement.AttemptMove(Vector2Int.down);
                     break;
                 }
             case 2:
                 {
-                    movement.AttemptMove(this, Vector2Int.left);
+                    movement.AttemptMove(Vector2Int.left);
                     break;
                 }
             case 3:
                 {
-                    movement.AttemptMove(this, Vector2Int.right);
+                    movement.AttemptMove(Vector2Int.right);
                     break;
                 }
         }

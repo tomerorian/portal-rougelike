@@ -6,9 +6,14 @@ public class MazeUnit : MonoBehaviour
 {
     [SerializeField] protected MazeMovement movement = null;
 
+    protected virtual void Awake()
+    {
+        movement.Init(this);
+    }
+
     private void Start()
     {
-        movement.MoveToMazePosition(this, Maze.Instance.WorldToMazePos(transform.position));
+        movement.MoveToMazePosition(Maze.Instance.WorldToMazePos(transform.position));
     }
 
     public MazeMovement GetMovement()
