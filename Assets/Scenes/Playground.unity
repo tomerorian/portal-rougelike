@@ -985,11 +985,6 @@ PrefabInstance:
       propertyPath: grid
       value: 
       objectReference: {fileID: 1116622737}
-    - target: {fileID: 979798274416396750, guid: c1f54746d5079eb448faadbdc0426a52,
-        type: 3}
-      propertyPath: blockingLayers.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 2857181236170948644, guid: c1f54746d5079eb448faadbdc0426a52,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1045,11 +1040,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2857181236170948645, guid: c1f54746d5079eb448faadbdc0426a52,
-        type: 3}
-      propertyPath: movement
-      value: 
-      objectReference: {fileID: 2857181235948537829}
     - target: {fileID: 2857181236170948699, guid: c1f54746d5079eb448faadbdc0426a52,
         type: 3}
       propertyPath: m_Name
@@ -1057,18 +1047,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1f54746d5079eb448faadbdc0426a52, type: 3}
---- !u!114 &2857181235948537829 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 979798274416396750, guid: c1f54746d5079eb448faadbdc0426a52,
-    type: 3}
-  m_PrefabInstance: {fileID: 2857181235948537828}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d440fe2794af74e9a54292e9e74c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5037720154134136487
 PrefabInstance:
   m_ObjectHideFlags: 0

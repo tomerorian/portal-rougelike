@@ -94,8 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0112e932ce3c18e46b22b4430edf33f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 2857181236170948647}
-  movement: {fileID: 0}
+  movement: {fileID: 979798274416396750}
 --- !u!114 &979798274416396750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +109,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 0}
   rigidbody: {fileID: 2857181236170948647}
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &2857181236282572800
 GameObject:
   m_ObjectHideFlags: 0
