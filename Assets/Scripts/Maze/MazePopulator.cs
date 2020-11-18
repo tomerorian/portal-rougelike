@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static MazeGeneration;
 
-public class MazePopulation
+public class MazePopulator
 {
     const int EXIT_DISTANCE_GAP_FROM_MAX = 5;
 
@@ -14,7 +14,7 @@ public class MazePopulation
 
     public Vector2Int ExitPos { get; private set; }
 
-    public MazePopulation(Cell[,] maze, Vector2Int startPos)
+    public MazePopulator(Cell[,] maze, Vector2Int startPos)
     {
         this.maze = maze;
         this.startPos = startPos;

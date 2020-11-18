@@ -26,7 +26,7 @@ public class Maze : MonoBehaviour
 
     Vector2Int startPos;
     Cell[,] maze;
-    MazePopulation mazePopulation;
+    MazePopulator mazePopulator;
 
     private void Awake()
     {
@@ -40,7 +40,7 @@ public class Maze : MonoBehaviour
         startPos = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
         maze = GenerateMaze(width, height, adjacentCellChance, startPos);
 
-        mazePopulation = new MazePopulation(maze, startPos);
+        mazePopulator = new MazePopulator(maze, startPos);
     }
 
     private void CreateSingleton()
@@ -56,7 +56,7 @@ public class Maze : MonoBehaviour
 
     private void Start()
     {
-        mazePopulation.PopulateMaze();
+        mazePopulator.PopulateMaze();
         SetTiles();
         CreateEntrance();
         CreateExit();
@@ -84,7 +84,7 @@ public class Maze : MonoBehaviour
 
     private void CreateExit()
     {
-        Instantiate(exitPrefab, MazeToWorldPos(mazePopulation.ExitPos), Quaternion.identity);
+        Instantiate(exitPrefab, MazeToWorldPos(mazePopulator.ExitPos), Quaternion.identity);
     }
 
     public Vector2Int GetStartPos()
