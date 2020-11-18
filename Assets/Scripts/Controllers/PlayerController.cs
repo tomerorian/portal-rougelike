@@ -10,7 +10,7 @@ public class PlayerController : MazeUnit
     {
         level = Level.Instance;
 
-        movement.SetWorldPositionByGrid(Maze.Instance.GetStartPos());
+        movement.MoveToMazePosition(Maze.Instance.GetStartPos());
     }
 
     private void Update()

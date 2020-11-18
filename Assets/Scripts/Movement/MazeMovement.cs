@@ -35,8 +35,8 @@ public class MazeMovement : GridMovement
 
     public void MoveToMazePosition(Vector2Int pos)
     {
-        mazePos = pos;
         maze.MoveUnitTo(unit, pos);
+        mazePos = pos;
         SetWorldPositionByGrid(pos);
     }
 
