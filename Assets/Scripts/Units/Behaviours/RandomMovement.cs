@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomMovement : TurnBasedUnit
+public class RandomMovement : TurnBasedBehaviour
 {
     public override IEnumerator TakeTurn()
     {
@@ -12,26 +12,31 @@ public class RandomMovement : TurnBasedUnit
         {
             case 0:
                 {
-                    movement.AttemptMove(Vector2Int.up);
+                    unit.GetMovement().AttemptMove(Vector2Int.up);
                     break;
                 }
             case 1:
                 {
-                    movement.AttemptMove(Vector2Int.down);
+                    unit.GetMovement().AttemptMove(Vector2Int.down);
                     break;
                 }
             case 2:
                 {
-                    movement.AttemptMove(Vector2Int.left);
+                    unit.GetMovement().AttemptMove(Vector2Int.left);
                     break;
                 }
             case 3:
                 {
-                    movement.AttemptMove(Vector2Int.right);
+                    unit.GetMovement().AttemptMove(Vector2Int.right);
                     break;
                 }
         }
 
         yield return null;
+    }
+
+    protected override TurnBasedUnit.BehaviourPriority GetPriority()
+    {
+        return TurnBasedUnit.BehaviourPriority.MOVEMENT;
     }
 }
