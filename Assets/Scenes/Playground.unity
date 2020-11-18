@@ -325,7 +325,7 @@ MonoBehaviour:
   rigidbody: {fileID: 301012948}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!61 &301012947
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   rigidbody: {fileID: 552023673}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!61 &552023672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -779,7 +779,7 @@ MonoBehaviour:
   rigidbody: {fileID: 1457129101}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!1 &1538496973
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +829,7 @@ MonoBehaviour:
   rigidbody: {fileID: 1538496977}
   blockingLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!61 &1538496976
 BoxCollider2D:
   m_ObjectHideFlags: 0

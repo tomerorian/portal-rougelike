@@ -62,16 +62,10 @@ public class Level : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
 
-        List<Coroutine> turnRoutines = new List<Coroutine>();
-
         foreach (TurnBasedUnit unit in units)
         {
-            turnRoutines.Add(StartCoroutine(unit.TakeTurn()));
-        }
-
-        foreach (Coroutine turnRoutine in turnRoutines)
-        {
-            yield return turnRoutine;
+            yield return StartCoroutine(unit.TakeTurn());
+            yield return new WaitForFixedUpdate();
         }
 
         RemoveUnits();
