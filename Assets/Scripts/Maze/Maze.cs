@@ -126,7 +126,7 @@ public class Maze : MonoBehaviour
             return false;
         }
 
-        if (mazeData[pos.x, pos.y].occupant != null && mazeData[pos.x, pos.y].occupant != this)
+        if (mazeData[pos.x, pos.y].occupant != null)
         {
             return false;
         }
