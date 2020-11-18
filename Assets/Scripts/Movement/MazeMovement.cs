@@ -17,8 +17,11 @@ public class MazeMovement : GridMovement
 
     public bool AttemptMove(Vector2Int direction)
     {
-        Vector2Int targetPos = mazePos + direction;
+        return AttemptMoveToPos(mazePos + direction);
+    }
 
+    public bool AttemptMoveToPos(Vector2Int targetPos)
+    {
         if (!Maze.Instance.CanMoveTo(targetPos)) { return false; }
 
         MoveToMazePosition(targetPos);

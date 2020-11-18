@@ -9,6 +9,9 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
     [SerializeField] float visionRange = 5f;
     [SerializeField] LayerMask enemyLayers = 0;
     [SerializeField] LayerMask visiionBlockingLayers = 0;
+    [SerializeField] int pursuitSteps = 5;
+
+    MazeUnit target = null;
 
     protected override TurnBasedUnit.BehaviourPriority GetPriority()
     {
@@ -19,19 +22,29 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
     {
         DidAction = false;
 
-        MazeUnit enemy = FindVisibleEnemy();
+        if (!target)
+        {
+            target = FindVisibleEnemy();
+        }
 
-        if (enemy)
+        if (target)
         {
             List<Vector2Int> path = AStar.FindPath(
                 Maze.Instance, 
-                unit.GetMovement().GetMazePos(), 
-                enemy.GetMovement().GetMazePos(), 
-                Maze.Instance.GetValidNeighbourCoords(enemy.GetMovement().GetMazePos()));
+                unit.GetMovement().GetMazePos(),
+                target.GetMovement().GetMazePos(), 
+                Maze.Instance.GetValidNeighbourCoords(target.GetMovement().GetMazePos()));
 
-            // TODO: Attack enemy
-            print("Found enemy! " + enemy.name);
-            DidAction = true;
+            if (path.Count > pursuitSteps)
+            {
+                target = null;
+                yield break;
+            }
+
+            if (path.Count >= 1 && unit.GetMovement().AttemptMoveToPos(path[1]))
+            {
+                DidAction = true;
+            }
         }
 
         yield break;
