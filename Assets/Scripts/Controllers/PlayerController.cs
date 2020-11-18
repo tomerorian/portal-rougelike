@@ -8,12 +8,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] MazeMovement movement = null;
 
-    Maze maze;
-
     private void Start()
     {
-        maze = FindObjectOfType<Maze>();
-        rb.position = maze.MazeToWorldPos(maze.GetStartPos());
+        rb.position = Maze.Instance.MazeToWorldPos(Maze.Instance.GetStartPos());
     }
 
     private void Update()
