@@ -9,6 +9,8 @@ public class Level : MonoBehaviour
     public static Level Instance { get; private set; }
 
     bool isPlayerTurn = false;
+    List<TurnBasedUnit> units = new List<TurnBasedUnit>();
+    List<TurnBasedUnit> removedUnits = new List<TurnBasedUnit>();
 
     private void Awake()
     {
@@ -19,16 +21,24 @@ public class Level : MonoBehaviour
         }
 
         Instance = this;
-    }
-
-    private void Start()
-    {
         InitGame();
     }
 
     private void InitGame()
     {
         isPlayerTurn = true;
+        units.Clear();
+        removedUnits.Clear();
+    }
+
+    public void AddUnit(TurnBasedUnit unit)
+    {
+        units.Add(unit);
+    }
+
+    public void RemoveUnit(TurnBasedUnit unit)
+    {
+        removedUnits.Add(unit);
     }
 
     public bool IsPlayerTurn()
@@ -50,7 +60,30 @@ public class Level : MonoBehaviour
 
     private IEnumerator DoEnemyTurn()
     {
+        List<Coroutine> turnRoutines = new List<Coroutine>();
+
+        foreach (TurnBasedUnit unit in units)
+        {
+            turnRoutines.Add(StartCoroutine(unit.TakeTurn()));
+        }
+
+        foreach (Coroutine turnRoutine in turnRoutines)
+        {
+            yield return turnRoutine;
+        }
+
+        RemoveUnits();
+
         isPlayerTurn = true;
-        yield return null;
+    }
+
+    private void RemoveUnits()
+    {
+        foreach (TurnBasedUnit unit in removedUnits)
+        {
+            units.Remove(unit);
+        }
+
+        removedUnits.Clear();
     }
 }

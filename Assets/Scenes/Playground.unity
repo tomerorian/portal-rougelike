@@ -212,6 +212,8 @@ GameObject:
   - component: {fileID: 1457129099}
   - component: {fileID: 1457129101}
   - component: {fileID: 1457129100}
+  - component: {fileID: 1457129103}
+  - component: {fileID: 1457129102}
   m_Layer: 9
   m_Name: Enemy Basic Melee
   m_TagString: Untagged
@@ -281,6 +283,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1457129102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457129098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7a54c6dfd852441a29b271d615113f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 1457129103}
+--- !u!114 &1457129103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457129098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d440fe2794af74e9a54292e9e74c1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 1116622737}
+  rigidbody: {fileID: 1457129101}
+  blockingLayers:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2046967628
 GameObject:
   m_ObjectHideFlags: 0

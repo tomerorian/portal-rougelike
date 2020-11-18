@@ -2,19 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomMovement : MonoBehaviour
+public class RandomMovement : TurnBasedUnit
 {
     [Header("Refs")]
     [SerializeField] MazeMovement movement = null;
 
-    void Start()
+    public override IEnumerator TakeTurn()
     {
-        
-    }
+        int randomDirection = Random.Range(0, 4);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        switch (randomDirection)
+        {
+            case 0:
+                {
+                    movement.AttemptMove(Vector2Int.up);
+                    break;
+                }
+            case 1:
+                {
+                    movement.AttemptMove(Vector2Int.down);
+                    break;
+                }
+            case 2:
+                {
+                    movement.AttemptMove(Vector2Int.left);
+                    break;
+                }
+            case 3:
+                {
+                    movement.AttemptMove(Vector2Int.right);
+                    break;
+                }
+        }
+
+        yield return null;
     }
 }
