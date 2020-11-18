@@ -59,6 +59,7 @@ public class Maze : MonoBehaviour
         {
             Debug.LogError("Found more than one MAze script instances");
             Destroy(gameObject);
+            return;
         }
 
         Instance = this;

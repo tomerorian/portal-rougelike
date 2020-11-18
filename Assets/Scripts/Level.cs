@@ -17,6 +17,7 @@ public class Level : MonoBehaviour
         {
             Debug.LogError("Found more than one Level script instances");
             Destroy(gameObject);
+            return;
         }
 
         Instance = this;

@@ -20,6 +20,7 @@ public class GameSession : MonoBehaviour
         if (Instance && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
 
         Instance = this;
