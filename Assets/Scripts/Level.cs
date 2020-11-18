@@ -9,7 +9,6 @@ public class Level : MonoBehaviour
     public static Level Instance { get; private set; }
 
     bool isPlayerTurn = false;
-    bool hasUnitsRoutineRunning = false;
     List<TurnBasedUnit> units = new List<TurnBasedUnit>();
     List<TurnBasedUnit> removedUnits = new List<TurnBasedUnit>();
 
@@ -25,17 +24,9 @@ public class Level : MonoBehaviour
         InitGame();
     }
 
-    private void Update()
-    {
-        if (IsPlayerTurn() || hasUnitsRoutineRunning) { return; }
-
-        StartCoroutine(DoUnitsTurn());
-    }
-
     private void InitGame()
     {
         isPlayerTurn = true;
-        hasUnitsRoutineRunning = false;
         units.Clear();
         removedUnits.Clear();
     }
@@ -63,12 +54,12 @@ public class Level : MonoBehaviour
     public void OnPlayerTookAction()
     {
         isPlayerTurn = false;
+
+        StartCoroutine(DoUnitsTurn());
     }
 
     private IEnumerator DoUnitsTurn()
     {
-        hasUnitsRoutineRunning = true;
-
         yield return new WaitForFixedUpdate();
 
         List<Coroutine> turnRoutines = new List<Coroutine>();
@@ -85,7 +76,6 @@ public class Level : MonoBehaviour
 
         RemoveUnits();
 
-        hasUnitsRoutineRunning = false;
         isPlayerTurn = true;
     }
 
