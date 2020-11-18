@@ -7,8 +7,8 @@ public class TurnBasedUnit : MazeUnit
 {
     public enum BehaviourPriority
     {
-        MOVEMENT,
-        ACTION
+        ACTION,
+        MOVEMENT
     }
 
     Dictionary<BehaviourPriority, List<TurnBasedBehaviour>> behavioursByPriority = new Dictionary<BehaviourPriority, List<TurnBasedBehaviour>>();
