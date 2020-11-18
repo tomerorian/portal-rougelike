@@ -60,12 +60,9 @@ public class Level : MonoBehaviour
 
     private IEnumerator DoUnitsTurn()
     {
-        yield return new WaitForFixedUpdate();
-
         foreach (TurnBasedUnit unit in units)
         {
             yield return StartCoroutine(unit.TakeTurn());
-            yield return new WaitForFixedUpdate();
         }
 
         RemoveUnits();
