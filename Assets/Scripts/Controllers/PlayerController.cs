@@ -8,33 +8,45 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody2D rb = null;
     [SerializeField] MazeMovement movement = null;
 
+    Level level;
+
     private void Start()
     {
+        level = Level.Instance;
+
         rb.position = Maze.Instance.MazeToWorldPos(Maze.Instance.GetStartPos());
     }
 
     private void Update()
     {
-        HandleMovementInput();
+        if (!level.IsPlayerTurn()) { return; }
+
+        if (HandleMovementInput()) 
+        {
+            level.OnPlayerTookAction();
+            return;
+        }
     }
 
-    private void HandleMovementInput()
+    private bool HandleMovementInput()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            movement.AttemptMove(Vector2Int.up);
+            return movement.AttemptMove(Vector2Int.up);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            movement.AttemptMove(Vector2Int.down);
+            return movement.AttemptMove(Vector2Int.down);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            movement.AttemptMove(Vector2Int.left);
+            return movement.AttemptMove(Vector2Int.left);
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            movement.AttemptMove(Vector2Int.right);
+            return movement.AttemptMove(Vector2Int.right);
         }
+
+        return false;
     }
 }
