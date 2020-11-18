@@ -146,4 +146,9 @@ public class Maze : MonoBehaviour
         mazeData[unit.GetMovement().GetMazePos().x, unit.GetMovement().GetMazePos().y].occupant = null;
         cellData.occupant = unit;
     }
+
+    public CellData GetCellData(Vector2Int pos)
+    {
+        return mazeData[pos.x, pos.y];
+    }
 }

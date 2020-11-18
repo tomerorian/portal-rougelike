@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 1457129103}
   - component: {fileID: 1457129104}
   - component: {fileID: 1457129102}
+  - component: {fileID: 1457129105}
   m_Layer: 9
   m_Name: Enemy Basic Melee
   m_TagString: Untagged
@@ -326,6 +327,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1457129103}
+--- !u!114 &1457129105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457129098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055de90b5ac23474284ec57fc04acb0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2046967628
 GameObject:
   m_ObjectHideFlags: 0
