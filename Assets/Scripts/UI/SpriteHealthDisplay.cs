@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthDisplay : MonoBehaviour
+public class SpriteHealthDisplay : MonoBehaviour
 {
     private const string CONTAINER_NAME = "Hearth Container";
 
