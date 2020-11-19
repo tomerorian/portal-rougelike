@@ -62,7 +62,7 @@ public abstract class HealthDisplay<T>: MonoBehaviour where T : Component
     {
         float totalContainers = health.GetMaxHealth() / 2f;
         int fullContainers = Mathf.FloorToInt(health.GetCurrentHealth() / 2f);
-        int emptyContainers = Mathf.FloorToInt((health.GetMaxHealth() - health.GetCurrentHealth()) / 2f);
+        int emptyContainers = Mathf.FloorToInt(Mathf.CeilToInt(totalContainers) - (health.GetCurrentHealth() / 2f));
         int halfContainers = Mathf.CeilToInt(totalContainers - fullContainers - emptyContainers);
 
         for (int i = 0; i < fullContainers; i++)
