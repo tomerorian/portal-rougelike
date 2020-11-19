@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274816920440595126}
   - component: {fileID: 4274816920440595125}
-  - component: {fileID: 1006851144}
+  - component: {fileID: 520850963}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -59,7 +59,10 @@ MonoBehaviour:
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
+    ModeOverride: 0
     LensShift: {x: 0, y: 0}
+    GateFit: 0
+    m_SensorSize: {x: 1.7779553, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -68,7 +71,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 4274816921822702385}
---- !u!114 &1006851144
+--- !u!114 &520850963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,10 +80,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4274816920440595127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e49a73e611f97834184f2e4a0b716357, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referenceCamera: {fileID: 4274816920946314419}
 --- !u!1 &4274816920794994092
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,10 +141,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -23.288637, y: 14.9100685}
-      - {x: -25.191946, y: -12.696201}
-      - {x: 23.41057, y: -12.698235}
-      - {x: 21.748304, y: 15.195245}
+    - - {x: -35.971313, y: 34.130962}
+      - {x: -36.92272, y: -16.551361}
+      - {x: 28.854362, y: -16.509811}
+      - {x: 29.443537, y: 34.563023}
 --- !u!1 &4274816920873231705
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +203,7 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
-  - {fileID: 4274816920440595125}
+  - {fileID: 0}
   m_Instructions: []
   m_DefaultBlend:
     m_Style: 1
@@ -221,7 +223,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4274816920873231705}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
   m_Name: 
@@ -365,6 +367,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
