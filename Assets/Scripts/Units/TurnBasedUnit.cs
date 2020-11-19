@@ -5,29 +5,17 @@ using UnityEngine;
 
 public class TurnBasedUnit : MazeUnit
 {
-    public enum BehaviourPriority
-    {
-        ACTION,
-        MOVEMENT
-    }
-
-    Dictionary<BehaviourPriority, List<TurnBasedBehaviour>> behavioursByPriority = new Dictionary<BehaviourPriority, List<TurnBasedBehaviour>>();
+    PriorityQueue<TurnBasedBehaviour> behaviours = new PriorityQueue<TurnBasedBehaviour>();
 
     public IEnumerator TakeTurn()
     {
-        foreach (BehaviourPriority enumValue in Enum.GetValues(typeof(BehaviourPriority)))
+        foreach (TurnBasedBehaviour behaviour in behaviours.Entires)
         {
-            if (behavioursByPriority.ContainsKey(enumValue))
-            {
-                foreach (var behaviour in behavioursByPriority[enumValue])
-                {
-                    yield return behaviour.TakeTurn();
+            yield return behaviour.TakeTurn();
 
-                    if (behaviour.DidAction)
-                    {
-                        yield break;
-                    }
-                }
+            if (behaviour.DidAction)
+            {
+                yield break;
             }
         }
     }
@@ -44,18 +32,13 @@ public class TurnBasedUnit : MazeUnit
         Level.Instance.RemoveUnit(this);
     }
 
-    public void RegisterBehaviour(TurnBasedBehaviour behaviour, BehaviourPriority priority)
+    public void RegisterBehaviour(TurnBasedBehaviour behaviour)
     {
-        if (!behavioursByPriority.ContainsKey(priority))
-        {
-            behavioursByPriority.Add(priority, new List<TurnBasedBehaviour>());
-        }
-
-        behavioursByPriority[priority].Add(behaviour);
+        behaviours.Enqueue(behaviour);
     }
 
-    public void UnregisterBehaviour(TurnBasedBehaviour behaviour, BehaviourPriority priority)
+    public void UnregisterBehaviour(TurnBasedBehaviour behaviour)
     {
-        behavioursByPriority[priority].Remove(behaviour);
+        behaviours.Entires.Remove(behaviour);
     }
 }

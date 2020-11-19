@@ -34,9 +34,4 @@ public class RandomMovement : TurnBasedBehaviour
 
         yield break;
     }
-
-    protected override TurnBasedUnit.BehaviourPriority GetPriority()
-    {
-        return TurnBasedUnit.BehaviourPriority.MOVEMENT;
-    }
 }

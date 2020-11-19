@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055de90b5ac23474284ec57fc04acb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priority: 99
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -343,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e324995647536a4b8ba606dd25d0644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priority: 100
   visionRange: 20
   enemyLayers:
     serializedVersion: 2

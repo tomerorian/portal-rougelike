@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TurnBasedBehaviour : MonoBehaviour
+public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedBehaviour>
 {
-    protected abstract TurnBasedUnit.BehaviourPriority GetPriority();
     public abstract IEnumerator TakeTurn();
+
+    [SerializeField] protected int priority = 100;
 
     public bool DidAction { get; protected set; }
 
@@ -14,11 +16,16 @@ public abstract class TurnBasedBehaviour : MonoBehaviour
     private void Awake()
     {
         unit = GetComponent<TurnBasedUnit>();
-        unit.RegisterBehaviour(this, GetPriority());
+        unit.RegisterBehaviour(this);
     }
 
     private void OnDestroy()
     {
-        unit.UnregisterBehaviour(this, GetPriority());
+        unit.UnregisterBehaviour(this);
+    }
+
+    public int CompareTo(TurnBasedBehaviour other)
+    {
+        return this.priority - other.priority;
     }
 }

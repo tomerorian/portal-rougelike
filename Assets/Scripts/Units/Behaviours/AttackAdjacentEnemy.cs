@@ -9,11 +9,6 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
     [SerializeField] LayerMask enemyLayers = 0;
     [SerializeField] int attackDamage = 1;
 
-    protected override TurnBasedUnit.BehaviourPriority GetPriority()
-    {
-        return TurnBasedUnit.BehaviourPriority.ACTION;
-    }
-
     public override IEnumerator TakeTurn()
     {
         DidAction = false;

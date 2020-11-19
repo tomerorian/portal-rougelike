@@ -15,11 +15,6 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
     MazeUnit target = null;
     int turnsSinceLastMove = -1;
 
-    protected override TurnBasedUnit.BehaviourPriority GetPriority()
-    {
-        return TurnBasedUnit.BehaviourPriority.MOVEMENT;
-    }
-
     public override IEnumerator TakeTurn()
     {
         DidAction = false;
