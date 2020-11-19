@@ -203,7 +203,7 @@ MonoBehaviour:
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
-  - {fileID: 0}
+  - {fileID: 4274816920440595125}
   m_Instructions: []
   m_DefaultBlend:
     m_Style: 1
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_PixelSnapping: 0
   m_CropFrameX: 1
   m_CropFrameY: 1
-  m_StretchFill: 0
+  m_StretchFill: 1
 --- !u!114 &4274816920946314416
 MonoBehaviour:
   m_ObjectHideFlags: 0

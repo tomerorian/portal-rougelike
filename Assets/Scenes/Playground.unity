@@ -205,6 +205,21 @@ PrefabInstance:
       propertyPath: m_ChildCameras.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4274816920946314417, guid: 038dc6f988283ec449032561f94d6770,
+        type: 3}
+      propertyPath: m_CropFrameX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274816920946314417, guid: 038dc6f988283ec449032561f94d6770,
+        type: 3}
+      propertyPath: m_CropFrameY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274816920946314417, guid: 038dc6f988283ec449032561f94d6770,
+        type: 3}
+      propertyPath: m_StretchFill
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 038dc6f988283ec449032561f94d6770, type: 3}
 --- !u!156049354 &1116622737 stripped
