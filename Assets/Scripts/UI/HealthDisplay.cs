@@ -39,16 +39,19 @@ public abstract class HealthDisplay<T>: MonoBehaviour where T : Component
 
     private void UpdateContainers()
     {
-        if (displayedMaxHealth < health.GetMaxHealth())
+        int displayedContainers = Mathf.CeilToInt(displayedMaxHealth / 2f);
+        int wantedContainers = Mathf.CeilToInt(health.GetMaxHealth() / 2f);
+
+        if (displayedContainers < wantedContainers)
         {
-            for (int i = displayedMaxHealth; i < health.GetMaxHealth(); i++)
+            for (int i = displayedContainers; i < wantedContainers; i++)
             {
                 AddContainerAtIndex(i);
             }
         }
-        else if (displayedMaxHealth > health.GetMaxHealth())
+        else if (displayedContainers > wantedContainers)
         {
-            for (int i = health.GetMaxHealth(); i < displayedMaxHealth; i++)
+            for (int i = wantedContainers; i < displayedContainers; i++)
             {
                 RemoveContainer();
             }
@@ -57,14 +60,24 @@ public abstract class HealthDisplay<T>: MonoBehaviour where T : Component
 
     private void UpdateFill()
     {
-        for (int i = 0; i < health.GetCurrentHealth() && i < health.GetMaxHealth(); i++)
+        float totalContainers = health.GetMaxHealth() / 2f;
+        int fullContainers = Mathf.FloorToInt(health.GetCurrentHealth() / 2f);
+        int emptyContainers = Mathf.FloorToInt((health.GetMaxHealth() - health.GetCurrentHealth()) / 2f);
+        int halfContainers = Mathf.CeilToInt(totalContainers - fullContainers - emptyContainers);
+
+        for (int i = 0; i < fullContainers; i++)
         {
             SetComponentWithSprite(hearthContainers[i], fullHearthSprite);
         }
 
-        for (int i = health.GetCurrentHealth(); i < health.GetMaxHealth(); i++)
+        for (int i = 0; i < halfContainers; i++)
         {
-            SetComponentWithSprite(hearthContainers[i], emptyHearthSprite);
+            SetComponentWithSprite(hearthContainers[fullContainers + i], halfHearthSprite);
+        }
+
+        for (int i = 0; i < emptyContainers; i++)
+        {
+            SetComponentWithSprite(hearthContainers[fullContainers + halfContainers + i], emptyHearthSprite);
         }
     }
 
