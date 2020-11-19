@@ -54,7 +54,7 @@ public abstract class HealthDisplay<T>: MonoBehaviour where T : Component
 
     private void UpdateFill()
     {
-        for (int i = 0; i < health.GetCurrentHealth(); i++)
+        for (int i = 0; i < health.GetCurrentHealth() && i < health.GetMaxHealth(); i++)
         {
             SetComponentWithSprite(hearthContainers[i], fullHearthSprite);
         }
