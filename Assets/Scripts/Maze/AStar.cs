@@ -58,7 +58,7 @@ public partial class AStar
             }
         }
 
-        return null;
+        return new List<Vector2Int>();
     }
 
     private static List<Vector2Int> RecostructPath(Node goal)
