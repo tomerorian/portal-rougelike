@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class SpriteHealthDisplay : MonoBehaviour
+public class HUDHealthDisplay : MonoBehaviour
 {
     private const string CONTAINER_NAME = "Hearth Container";
 
@@ -14,13 +14,12 @@ public class SpriteHealthDisplay : MonoBehaviour
     [SerializeField] private Sprite emptyHearthSprite = null;
 
     [Header("Config")]
-    [SerializeField] private string sortingLayerName = "UI";
-    [SerializeField] private float gapBetweenContainerCenters = 0.8f;
+    [SerializeField] private float gapBetweenHearthCenters = 16f;
 
     int displayedMaxHealth = 0;
     int displayedCurrentHealth = 0;
 
-    List<SpriteRenderer> hearthContainers = new List<SpriteRenderer>();
+    List<Image> hearthContainers = new List<Image>();
 
     private void Update()
     {
@@ -46,7 +45,8 @@ public class SpriteHealthDisplay : MonoBehaviour
             for (int i = displayedMaxHealth; i < health.GetMaxHealth(); i++)
             {
                 GameObject newContainer = AddContainer();
-                newContainer.transform.position = new Vector2(i * gapBetweenContainerCenters * transform.localScale.x, 0);
+                float containerX = transform.position.x + i * gapBetweenHearthCenters * transform.localScale.x;
+                newContainer.transform.position = new Vector2(containerX, transform.position.y);
             }
         }
         else if (displayedMaxHealth > health.GetMaxHealth())
@@ -60,11 +60,13 @@ public class SpriteHealthDisplay : MonoBehaviour
         for (int i = 0; i < health.GetCurrentHealth(); i++)
         {
             hearthContainers[i].sprite = fullHearthSprite;
+            hearthContainers[i].SetNativeSize();
         }
-        
+
         for (int i = health.GetCurrentHealth(); i < health.GetMaxHealth(); i++)
         {
             hearthContainers[i].sprite = emptyHearthSprite;
+            hearthContainers[i].SetNativeSize();
         }
     }
 
@@ -74,10 +76,9 @@ public class SpriteHealthDisplay : MonoBehaviour
         container.transform.parent = transform;
         container.transform.localScale = new Vector3(1, 1, 1);
 
-        SpriteRenderer renderer = container.AddComponent<SpriteRenderer>();
-        renderer.sortingLayerName = sortingLayerName;
+        Image image = container.AddComponent<Image>();
 
-        hearthContainers.Add(renderer);
+        hearthContainers.Add(image);
 
         return container;
     }
@@ -85,7 +86,7 @@ public class SpriteHealthDisplay : MonoBehaviour
     private void RemoveContainer()
     {
         int lastContainerIndex = hearthContainers.Count - 1;
-        SpriteRenderer container = hearthContainers[lastContainerIndex];
+        Image container = hearthContainers[lastContainerIndex];
         hearthContainers.RemoveAt(lastContainerIndex);
 
         Destroy(container.gameObject);
