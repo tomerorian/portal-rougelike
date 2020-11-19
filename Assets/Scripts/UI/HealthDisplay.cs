@@ -48,7 +48,10 @@ public abstract class HealthDisplay<T>: MonoBehaviour where T : Component
         }
         else if (displayedMaxHealth > health.GetMaxHealth())
         {
-            RemoveContainer();
+            for (int i = health.GetMaxHealth(); i < displayedMaxHealth; i++)
+            {
+                RemoveContainer();
+            }
         }
     }
 
