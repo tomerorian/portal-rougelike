@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static MazeGeneration;
@@ -23,6 +24,7 @@ public class Maze : MonoBehaviour
     [Header("Debug")]
     [Tooltip("Will set a forced random seed if set to anything but 0")]
     [SerializeField] int forcedMazeSeed = 0;
+    [SerializeField] bool displayCellDistanceGizmos = false;
 
     Vector2Int startPos;
     Cell[,] maze;
@@ -197,5 +199,30 @@ public class Maze : MonoBehaviour
         }
 
         return validNeighbours;
+    }
+
+    void OnDrawGizmos()
+    {
+        if (!displayCellDistanceGizmos || maze == null) { return; }
+
+        Vector3Int pos = new Vector3Int(0, 0, 0);
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 14;
+        style.normal.textColor = Color.black;
+        style.alignment = TextAnchor.MiddleCenter;
+
+        Vector3 labelOffset = new Vector3(0, layoutTileMap.cellSize.y / 4f);
+
+        foreach (Cell cell in maze)
+        {
+            if (cell.isPath)
+            {
+                pos.x = cell.x;
+                pos.y = cell.y;
+                Vector3 labelPos = layoutTileMap.GetCellCenterWorld(pos);
+
+                Handles.Label(labelPos + labelOffset, cell.distanceFromStart.ToString(), style);
+            }
+        }
     }
 }

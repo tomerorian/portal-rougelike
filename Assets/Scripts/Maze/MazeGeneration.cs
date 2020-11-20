@@ -111,15 +111,25 @@ public static class MazeGeneration
     {
         startingCell.distanceFromStart = 0;
 
-        List<Cell> cellsToUpdate = new List<Cell>();
+        HashSet<Cell> cellsToUpdate = new HashSet<Cell>();
+        List<Cell> nextCellsToUpdate = new List<Cell>();
+
         cellsToUpdate.Add(startingCell);
 
         while (cellsToUpdate.Count > 0)
         {
-            Cell cell = cellsToUpdate[0];
-            cellsToUpdate.RemoveAt(0);
+            foreach (Cell cell in cellsToUpdate)
+            {
+                UpdatCellDistance(maze, nextCellsToUpdate, cell);
+            }
 
-            UpdatCellDistance(maze, cellsToUpdate, cell);
+            cellsToUpdate.Clear();
+
+            foreach (Cell cell in nextCellsToUpdate)
+            {
+                cellsToUpdate.Add(cell);
+            }
+            nextCellsToUpdate.Clear();
         }
     }
 
@@ -165,7 +175,7 @@ public static class MazeGeneration
         foreach (Cell neighbour in validNeighbours)
         {
             if (neighbour.isPath &&
-                cell.distanceFromStart < neighbour.distanceFromStart)
+                cell.distanceFromStart + 1 < neighbour.distanceFromStart)
             {
                 cellsToUpdate.Add(neighbour);
             }
