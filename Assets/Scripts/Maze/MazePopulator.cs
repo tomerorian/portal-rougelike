@@ -96,13 +96,11 @@ public class MazePopulator
         int level = GameSession.Instance.GetLevel();
         int enemiesToPopulate = Mathf.FloorToInt(5f * (1 + Mathf.Log(level, 2)));
 
-        Object enemyPrefab = Resources.Load("enemy", typeof(GameObject));
-
         for (int i = 0; i < enemiesToPopulate; i++)
         {
             Cell randomSpawnPoint = GetRandomFreePath();
 
-            Object.Instantiate(enemyPrefab, new Vector3(randomSpawnPoint.x, randomSpawnPoint.y, 0), Quaternion.identity);
+            Object.Instantiate(PrefabCache.Instance.Enemy, new Vector3(randomSpawnPoint.x, randomSpawnPoint.y, 0), Quaternion.identity);
         }
     }
     #endregion
