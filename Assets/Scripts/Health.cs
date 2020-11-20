@@ -26,6 +26,20 @@ public class Health : MonoBehaviour
         return maxHealth;
     }
 
+    public void ChangeMaxHealth(int maxHealth)
+    {
+        if (maxHealth > this.maxHealth)
+        {
+            currentHealth += this.maxHealth - maxHealth;
+        }
+        else if (maxHealth < this.maxHealth)
+        {
+            currentHealth = Mathf.Min(maxHealth, currentHealth);
+        }
+
+        this.maxHealth = maxHealth;
+    }
+
     public int GetCurrentHealth()
     {
         return currentHealth;
