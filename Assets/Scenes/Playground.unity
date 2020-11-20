@@ -789,18 +789,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5037720155232373044, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
         type: 3}
-      propertyPath: adjacentCellChance
-      value: 0.138
-      objectReference: {fileID: 0}
-    - target: {fileID: 5037720155232373044, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
-        type: 3}
       propertyPath: forcedMazeSeed
-      value: 1312312
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5037720155232373044, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
         type: 3}
       propertyPath: displayCellDistanceGizmos
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037720155232373044, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
+        type: 3}
+      propertyPath: width
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037720155232373044, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
+        type: 3}
+      propertyPath: height
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037720155232373044, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
+        type: 3}
+      propertyPath: adjacentCellChance
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 5037720155232373045, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
         type: 3}

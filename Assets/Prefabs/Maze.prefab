@@ -368,5 +368,6 @@ MonoBehaviour:
     type: 3}
   width: 20
   height: 20
-  adjacentCellChance: 0.06
+  adjacentCellChance: 0.13
   forcedMazeSeed: 0
+  displayCellDistanceGizmos: 0
