@@ -76,5 +76,10 @@ public class GameSession : MonoBehaviour
         levelsCompleted = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public int GetLevel()
+    {
+        return levelsCompleted + 1;
+    }
     #endregion
 }

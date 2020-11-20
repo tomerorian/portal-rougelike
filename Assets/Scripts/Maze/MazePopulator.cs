@@ -26,9 +26,12 @@ public class MazePopulator
     {
         InitMazePath();
         FindMaxDistanceFromStart();
+
         PlaceExit();
+        PopulateEnemies();
     }
 
+    #region Prep
     private void InitMazePath()
     {
         foreach (Cell cell in maze)
@@ -52,7 +55,9 @@ public class MazePopulator
             }
         }
     }
+    #endregion
 
+    #region Population
     private void PlaceExit(int maxAdjcentCells = 1)
     {
         if (maxAdjcentCells > 4)
@@ -85,6 +90,26 @@ public class MazePopulator
         }
     }
 
+    #region Enemy Population
+    private void PopulateEnemies()
+    {
+        int level = GameSession.Instance.GetLevel();
+        int enemiesToPopulate = Mathf.FloorToInt(5f * (1 + Mathf.Log(level, 2)));
+
+        Object enemyPrefab = Resources.Load("enemy", typeof(GameObject));
+
+        for (int i = 0; i < enemiesToPopulate; i++)
+        {
+            Cell randomSpawnPoint = GetRandomFreePath();
+
+            Object.Instantiate(enemyPrefab, new Vector3(randomSpawnPoint.x, randomSpawnPoint.y, 0), Quaternion.identity);
+        }
+    }
+    #endregion
+
+    #endregion
+
+    #region Utils
     private int CountAdjcentPaths(Cell cell)
     {
         int count = 0;
@@ -113,4 +138,21 @@ public class MazePopulator
 
         return count;
     }
+
+    private Cell GetRandomFreePath()
+    {
+        Cell cell;
+        Vector2Int pos = new Vector2Int();
+
+        do
+        {
+            cell = mazePath[Random.Range(0, mazePath.Count)];
+            pos.x = cell.x;
+            pos.y = cell.y;
+        }
+        while (!Maze.Instance.CanMoveTo(pos));
+
+        return cell;
+    }
+    #endregion
 }
