@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MazeMovement : GridMovement
 {
-    [Header("Config")]
-    [SerializeField] LayerMask blockingLayers = 0;
-
     Vector2Int mazePos;
     MazeUnit unit;
 
