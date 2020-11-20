@@ -148,7 +148,7 @@ public class MazePopulator
             pos.x = cell.x;
             pos.y = cell.y;
         }
-        while (!Maze.Instance.CanMoveTo(pos));
+        while (pos.Equals(startPos) || pos.Equals(ExitPos) || !Maze.Instance.CanMoveTo(pos));
 
         return cell;
     }

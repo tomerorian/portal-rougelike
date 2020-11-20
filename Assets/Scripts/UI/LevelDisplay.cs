@@ -5,7 +5,7 @@ using TMPro;
 
 public class LevelDisplay : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] TextMeshProUGUI levelText = null;
 
     private void Start()
     {
