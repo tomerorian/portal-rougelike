@@ -100,7 +100,11 @@ public static class MazeGeneration
     private static void UpdateNeighbourCell(List<Cell> potentialPaths, Cell updatingCell, Cell neighbourCell)
     {
         neighbourCell.neighbourCount++;
-        potentialPaths.Add(neighbourCell);
+
+        if (!neighbourCell.isPath)
+        {
+            potentialPaths.Add(neighbourCell);
+        }
     }
 
     private static void UpdateDistancesFromStart(Cell[,] maze, Cell startingCell)
