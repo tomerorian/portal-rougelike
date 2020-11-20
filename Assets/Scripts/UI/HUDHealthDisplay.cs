@@ -19,4 +19,12 @@ public class HUDHealthDisplay : HealthDisplay<Image>
         float containerX = transform.position.x + index * gapBetweenHearthCenters * transform.localScale.x;
         container.transform.position = new Vector2(containerX, transform.position.y);
     }
+
+    private void OnDrawGizmos()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 30;
+        style.normal.textColor = Color.black;
+        UnityEditor.Handles.Label(transform.position, "Health Display", style);
+    }
 }
