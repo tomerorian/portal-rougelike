@@ -201,6 +201,7 @@ public class Maze : MonoBehaviour
         return validNeighbours;
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmos()
     {
         if (!displayCellDistanceGizmos || maze == null) { return; }
@@ -225,4 +226,5 @@ public class Maze : MonoBehaviour
             }
         }
     }
+#endif
 }

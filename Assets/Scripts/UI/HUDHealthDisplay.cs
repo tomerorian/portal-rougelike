@@ -20,6 +20,7 @@ public class HUDHealthDisplay : HealthDisplay<Image>
         container.transform.position = new Vector2(containerX, transform.position.y);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         GUIStyle style = new GUIStyle();
@@ -27,4 +28,5 @@ public class HUDHealthDisplay : HealthDisplay<Image>
         style.normal.textColor = Color.black;
         UnityEditor.Handles.Label(transform.position, "Health Display", style);
     }
+#endif
 }
