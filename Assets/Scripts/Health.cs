@@ -14,11 +14,14 @@ public class Health : MonoBehaviour
     [SerializeField] int maxHealth = 1;
 
     [Header("Debug View")]
-    [SerializeField] int currentHealth;
+    [SerializeField] int currentHealth = 0;
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        if (currentHealth == 0)
+        {
+            currentHealth = maxHealth;
+        }
     }
 
     public int GetMaxHealth()
@@ -26,23 +29,28 @@ public class Health : MonoBehaviour
         return maxHealth;
     }
 
-    public void ChangeMaxHealth(int maxHealth)
+    public void ChangeMaxHealth(int health)
     {
-        if (maxHealth > this.maxHealth)
+        if (health > maxHealth)
         {
-            currentHealth += this.maxHealth - maxHealth;
+            currentHealth += maxHealth - health;
         }
-        else if (maxHealth < this.maxHealth)
+        else if (health < maxHealth)
         {
-            currentHealth = Mathf.Min(maxHealth, currentHealth);
+            currentHealth = Mathf.Min(health, currentHealth);
         }
 
-        this.maxHealth = maxHealth;
+        maxHealth = health;
     }
 
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public void SetCurrentHealth(int health)
+    {
+        currentHealth = Mathf.Min(health, maxHealth);
     }
 
     public void TakeDamage(int damage)
