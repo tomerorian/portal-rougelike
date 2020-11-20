@@ -207,12 +207,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 038dc6f988283ec449032561f94d6770, type: 3}
---- !u!156049354 &1116622737 stripped
-Grid:
-  m_CorrespondingSourceObject: {fileID: 5037720155232373046, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 5037720154134136487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1674980298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,11 +533,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Basic Melee
       objectReference: {fileID: 0}
-    - target: {fileID: 1380044622716370198, guid: f70771f285105c14f888312ba2ef7fd2,
-        type: 3}
-      propertyPath: grid
-      value: 
-      objectReference: {fileID: 1116622737}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f70771f285105c14f888312ba2ef7fd2, type: 3}
 --- !u!1001 &2857181235948537828
@@ -553,11 +542,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 979798274416396750, guid: c1f54746d5079eb448faadbdc0426a52,
-        type: 3}
-      propertyPath: grid
-      value: 
-      objectReference: {fileID: 1116622737}
     - target: {fileID: 2857181236170948644, guid: c1f54746d5079eb448faadbdc0426a52,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -685,6 +669,11 @@ PrefabInstance:
     - target: {fileID: 5037720155232373047, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
         type: 3}
       propertyPath: m_Name
+      value: Maze
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037720155232373047, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
+        type: 3}
+      propertyPath: m_TagString
       value: Maze
       objectReference: {fileID: 0}
     m_RemovedComponents: []

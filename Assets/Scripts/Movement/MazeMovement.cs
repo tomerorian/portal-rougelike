@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MazeMovement : GridMovement
+public class MazeMovement : MonoBehaviour
 {
     Vector2Int mazePos;
     MazeUnit unit;
@@ -30,7 +30,7 @@ public class MazeMovement : GridMovement
     {
         Maze.Instance.MoveUnitTo(unit, pos);
         mazePos = pos;
-        SetWorldPositionByGrid(pos);
+        transform.position = Maze.Instance.MazeToWorldPos(pos);
     }
 
     public Vector2Int GetMazePos()

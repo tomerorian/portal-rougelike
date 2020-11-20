@@ -108,11 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d440fe2794af74e9a54292e9e74c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid: {fileID: 0}
-  rigidbody: {fileID: 2857181236170948647}
-  blockingLayers:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &6377568851817919730
 MonoBehaviour:
   m_ObjectHideFlags: 0
