@@ -8,10 +8,14 @@ public class GameSession : MonoBehaviour
 {
     public static GameSession Instance { get; private set; }
 
+    [Header("Config")]
+    [SerializeField] int startingPlayerHealth = 5;
+    [SerializeField] int startingPlayerMaxHealth = 5;
+
     [Header("Debug View")]
     [SerializeField] int levelsCompleted = 0;
-    [SerializeField] int playerCurrentHealth = 5;
-    [SerializeField] int playerMaxHealth = 5;
+    [SerializeField] int playerCurrentHealth = 0;
+    [SerializeField] int playerMaxHealth = 0;
 
     GameObject player = null;
 
@@ -20,6 +24,9 @@ public class GameSession : MonoBehaviour
         if (!SetupSingleton()) { return; }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        playerCurrentHealth = startingPlayerHealth;
+        playerMaxHealth = startingPlayerMaxHealth;
     }
 
     #region Singleton
@@ -74,6 +81,8 @@ public class GameSession : MonoBehaviour
     public void OnPlayerDeath()
     {
         levelsCompleted = 0;
+        playerCurrentHealth = startingPlayerHealth;
+        playerMaxHealth = startingPlayerMaxHealth;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
