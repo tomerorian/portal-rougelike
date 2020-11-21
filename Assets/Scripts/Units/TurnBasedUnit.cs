@@ -5,19 +5,26 @@ using UnityEngine;
 
 public class TurnBasedUnit : MazeUnit
 {
+    public bool FinishedTurn { get; private set; }
+
     PriorityQueue<TurnBasedBehaviour> behaviours = new PriorityQueue<TurnBasedBehaviour>();
 
     public IEnumerator TakeTurn()
     {
+        FinishedTurn = false;
+
         foreach (TurnBasedBehaviour behaviour in behaviours.Entires)
         {
             yield return behaviour.TakeTurn();
 
             if (behaviour.DidAction)
             {
+                FinishedTurn = true;
                 yield break;
             }
         }
+
+        FinishedTurn = true;
     }
 
     protected override void Start()

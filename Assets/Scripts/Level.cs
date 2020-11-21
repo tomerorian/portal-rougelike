@@ -63,8 +63,24 @@ public class Level : MonoBehaviour
     {
         foreach (TurnBasedUnit unit in units)
         {
-            yield return StartCoroutine(unit.TakeTurn());
+            StartCoroutine(unit.TakeTurn());
         }
+
+        bool didAllUnitsFinish;
+
+        do
+        {
+            didAllUnitsFinish = true;
+            foreach (TurnBasedUnit unit in units)
+            {
+                didAllUnitsFinish = didAllUnitsFinish && unit.FinishedTurn;
+            }
+
+            if (!didAllUnitsFinish)
+            {
+                yield return null;
+            }
+        } while (!didAllUnitsFinish);
 
         RemoveUnits();
 
