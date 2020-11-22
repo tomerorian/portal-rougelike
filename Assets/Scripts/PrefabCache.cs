@@ -25,6 +25,6 @@ public class PrefabCache : MonoBehaviour
     }
     #endregion
 
-    public GameObject Enemy;
+    public MazeUnit Enemy;
     public Item Sword;
 }

@@ -103,7 +103,8 @@ public class MazePopulator
         {
             Cell randomSpawnPoint = GetRandomFreePath();
 
-            InstantiateInCell(PrefabCache.Instance.Enemy, randomSpawnPoint);
+            MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Enemy, randomSpawnPoint);
+            mazeData[randomSpawnPoint.x, randomSpawnPoint.y].occupant = enemy;
         }
     }
     #endregion
