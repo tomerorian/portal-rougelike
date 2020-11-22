@@ -21,6 +21,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] int playerMaxHealth = 0;
 
     public GameObject player { get; private set; } = null;
+    public PlayerController playerController { get; private set; } = null;
+    public Health playerHealth { get; private set; } = null;
     public PlayerInventory playerInventory { get; private set; } = null;
 
     private void Awake()
@@ -62,11 +64,12 @@ public class GameSession : MonoBehaviour
     private void UpdateReferences()
     {
         player = GameObject.FindWithTag("Player");
+        playerHealth = player.GetComponent<Health>();
+        playerController = player.GetComponent<PlayerController>();
     }
 
     private void UpdatePlayer()
     {
-        Health playerHealth = player.GetComponent<Health>();
         playerHealth.onDamage += OnPlayerTakenDamage;
         playerHealth.ChangeMaxHealth(playerMaxHealth);
         playerHealth.SetCurrentHealth(playerCurrentHealth);

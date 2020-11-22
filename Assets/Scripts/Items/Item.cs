@@ -19,7 +19,7 @@ public abstract class Item : MonoBehaviour
         enabled = true;
         isActivated = true;
 
-        GameSession.Instance.player.GetComponent<PlayerController>().enabled = false;
+        GameSession.Instance.playerController.enabled = false;
     }
 
     protected void Deactivate()
@@ -27,7 +27,7 @@ public abstract class Item : MonoBehaviour
         enabled = false;
         isActivated = false;
 
-        GameSession.Instance.player.GetComponent<PlayerController>().enabled = true;
+        GameSession.Instance.playerController.enabled = true;
     }
 
     protected void Used()
