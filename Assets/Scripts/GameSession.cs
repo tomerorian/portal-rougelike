@@ -9,7 +9,7 @@ public class GameSession : MonoBehaviour
     public static GameSession Instance { get; private set; }
 
     [Header("Refs")]
-    public GameObject inventoryItemsParent = null;
+    [SerializeField] GameObject playerInventoryItemsParent = null;
 
     [Header("Config")]
     [SerializeField] int startingPlayerHealth = 5;
@@ -22,7 +22,7 @@ public class GameSession : MonoBehaviour
 
     GameObject player = null;
 
-    public PlayerInventory playerInventory { get; private set; } = new PlayerInventory();
+    public PlayerInventory playerInventory { get; private set; } = null;
 
     private void Awake()
     {
@@ -33,7 +33,8 @@ public class GameSession : MonoBehaviour
         playerCurrentHealth = startingPlayerHealth;
         playerMaxHealth = startingPlayerMaxHealth;
 
-        inventoryItemsParent.SetActive(false);
+        playerInventory = new PlayerInventory(playerInventoryItemsParent);
+        playerInventoryItemsParent.SetActive(false);
     }
 
     #region Singleton

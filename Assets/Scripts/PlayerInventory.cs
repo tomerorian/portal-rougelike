@@ -8,9 +8,12 @@ public class PlayerInventory : IEnumerable
     public const int PLAYER_INVENTORY_SLOTS = 5;
 
     Item[] items = new Item[PLAYER_INVENTORY_SLOTS];
+    GameObject inventoryItemsParent;
 
-    public PlayerInventory()
+    public PlayerInventory(GameObject inventoryItemsParent)
     {
+        this.inventoryItemsParent = inventoryItemsParent;
+
         for (int i = 0; i < items.Length; i++)
         {
             items[i] = null;
@@ -24,7 +27,7 @@ public class PlayerInventory : IEnumerable
             if (items[i] == null)
             {
                 items[i] = item;
-                item.transform.parent = GameSession.Instance.inventoryItemsParent.transform;
+                item.transform.parent = inventoryItemsParent.transform;
                 return true;
             }
         }
