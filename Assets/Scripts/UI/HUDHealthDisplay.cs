@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class HUDHealthDisplay : HealthDisplay<Image>
 {
-    [Header("Config")]
-    [SerializeField] private float gapBetweenHearthCenters = 16f;
-
     protected override void SetComponentWithSprite(Image component, Sprite sprite)
     {
         component.sprite = sprite;
