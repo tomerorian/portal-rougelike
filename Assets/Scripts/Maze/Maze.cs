@@ -165,6 +165,28 @@ public class Maze : MonoBehaviour
         return mazeData[pos.x, pos.y].occupant;
     }
 
+    public Item GetItem(Vector2Int pos)
+    {
+        if (IsPosOutOfBounds(pos))
+        {
+            return null;
+        }
+
+        return mazeData[pos.x, pos.y].item;
+    }
+
+    public Item TakeItem(Vector2Int pos)
+    {
+        Item item = GetItem(pos);
+
+        if (item != null)
+        {
+            mazeData[pos.x, pos.y].item = null;
+        }
+
+        return item;
+    }
+
     private bool IsPosOutOfBounds(Vector2Int pos)
     {
         return pos.x < 0 || pos.y < 0 || pos.x >= width || pos.y >= height;

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MazeUnit
 {
@@ -24,6 +22,12 @@ public class PlayerController : MazeUnit
             level.OnPlayerTookAction();
             return;
         }
+
+        if (HandlePickup())
+        {
+            level.OnPlayerTookAction();
+            return;
+        }
     }
 
     private bool HandleMovementInput()
@@ -43,6 +47,23 @@ public class PlayerController : MazeUnit
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             return movement.AttemptMove(Vector2Int.right);
+        }
+
+        return false;
+    }
+
+    private bool HandlePickup()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (GameSession.Instance.playerInventory.IsFull()) { return false; }
+
+            Vector2Int pos = movement.GetMazePos();
+            Item item = Maze.Instance.TakeItem(pos);
+
+            if (item == null) { return false; }
+
+            return GameSession.Instance.playerInventory.AttemptAddItem(item);
         }
 
         return false;

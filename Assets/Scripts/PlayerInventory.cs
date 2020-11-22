@@ -31,6 +31,19 @@ public class PlayerInventory : IEnumerable
         return false;
     }
 
+    public bool IsFull()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] == null)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public Item GetItemAt(int index)
     {
         if (index >= items.Length) { return null; }
