@@ -20,8 +20,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int playerCurrentHealth = 0;
     [SerializeField] int playerMaxHealth = 0;
 
-    GameObject player = null;
-
+    public GameObject player { get; private set; } = null;
     public PlayerInventory playerInventory { get; private set; } = null;
 
     private void Awake()

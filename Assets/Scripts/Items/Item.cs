@@ -18,12 +18,23 @@ public abstract class Item : MonoBehaviour
     {
         enabled = true;
         isActivated = true;
+
+        GameSession.Instance.player.GetComponent<PlayerController>().enabled = false;
     }
 
     protected void Deactivate()
     {
         enabled = false;
         isActivated = false;
+
+        GameSession.Instance.player.GetComponent<PlayerController>().enabled = true;
+    }
+
+    protected void Used()
+    {
+        Deactivate();
+
+        Level.Instance.OnPlayerTookAction();
     }
 
     public SpriteRenderer GetSpriteRenderer()

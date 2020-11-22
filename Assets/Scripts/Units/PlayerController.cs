@@ -108,7 +108,6 @@ public class PlayerController : MazeUnit
         if (item)
         {
             item.Activate();
-            enabled = false;
         }
     }
 
