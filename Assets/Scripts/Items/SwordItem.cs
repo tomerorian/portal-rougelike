@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class SwordItem : Item
 {
+    [Header("Refs")]
     [SerializeField] GameObject attackIndicatorPrefab = null;
+
+    [Header("Config")]
+    [SerializeField] int damage = 1;
 
     GameObject attackIndicator = null;
     Vector2Int attackPos = Vector2Int.zero;
@@ -42,6 +46,10 @@ public class SwordItem : Item
         {
             PositionIndicator(Vector2Int.right);
         }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Attack();
+        }
         else if (Input.GetKeyDown(KeyCode.X))
         {
             Deactivate();
@@ -54,5 +62,21 @@ public class SwordItem : Item
         attackPos = playerPos + direction;
 
         attackIndicator.transform.position = Maze.Instance.MazeToWorldPos(attackPos);
+    }
+
+    private void Attack()
+    {
+        MazeUnit target = Maze.Instance.GetOccupant(attackPos);
+
+        if (target)
+        {
+            Health targetHealth = target.GetComponent<Health>();
+
+            if (targetHealth)
+            {
+                targetHealth.TakeDamage(damage);
+                Used();
+            }
+        }
     }
 }
