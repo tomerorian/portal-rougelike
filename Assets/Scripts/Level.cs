@@ -56,6 +56,7 @@ public class Level : MonoBehaviour
     {
         isPlayerTurn = false;
 
+        RemoveUnits();
         StartCoroutine(DoUnitsTurn());
     }
 
