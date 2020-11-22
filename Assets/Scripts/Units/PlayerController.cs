@@ -28,6 +28,8 @@ public class PlayerController : MazeUnit
             level.OnPlayerTookAction();
             return;
         }
+
+        HandleItemUse();
     }
 
     private bool HandleMovementInput()
@@ -73,6 +75,41 @@ public class PlayerController : MazeUnit
         }
 
         return false;
+    }
+
+    private void HandleItemUse()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseItem(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseItem(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UseItem(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            UseItem(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            UseItem(4);
+        }
+    }
+
+    private void UseItem(int index)
+    {
+        Item item = GameSession.Instance.playerInventory.GetItemAt(index);
+
+        if (item)
+        {
+            item.Activate();
+            enabled = false;
+        }
     }
 
     private void OnDeath()

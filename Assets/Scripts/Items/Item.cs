@@ -9,13 +9,20 @@ public abstract class Item : MonoBehaviour
 
     protected bool isActivated = false;
 
+    private void Awake()
+    {
+        enabled = false;
+    }
+
     public void Activate()
     {
+        enabled = true;
         isActivated = true;
     }
 
     protected void Deactivate()
     {
+        enabled = false;
         isActivated = false;
     }
 
