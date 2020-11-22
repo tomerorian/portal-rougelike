@@ -17,6 +17,6 @@ public class SpriteHealthDisplay : HealthDisplay<SpriteRenderer>
 
     protected override void SetContainerPositionByIndex(GameObject container, int index)
     {
-        container.transform.position = new Vector2(index * gapBetweenContainerCenters * transform.localScale.x, 0);
+        container.transform.localPosition = new Vector2(index * gapBetweenContainerCenters, 0);
     }
 }
