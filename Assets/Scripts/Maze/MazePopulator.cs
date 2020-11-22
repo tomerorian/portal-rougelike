@@ -101,10 +101,10 @@ public class MazePopulator
 
         for (int i = 0; i < enemiesToPopulate; i++)
         {
-            Cell randomSpawnPoint = GetRandomFreePath();
+            Cell cell = GetRandomFreeUnitCell();
 
-            MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Enemy, randomSpawnPoint);
-            mazeData[randomSpawnPoint.x, randomSpawnPoint.y].occupant = enemy;
+            MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Enemy, cell);
+            mazeData[cell.x, cell.y].occupant = enemy;
         }
     }
     #endregion
@@ -112,9 +112,10 @@ public class MazePopulator
     #region Item Population
     private void PopulateItems()
     {
-        Cell randomFreePoint = GetRandomFreePath();
+        Cell cell = GetRandomFreeItemCell();
 
-        InstantiateInCell(PrefabCache.Instance.Sword, randomFreePoint);
+        Item item = InstantiateInCell(PrefabCache.Instance.Sword, cell);
+        mazeData[cell.x, cell.y].item = item;
     }
     #endregion
 
@@ -150,7 +151,7 @@ public class MazePopulator
         return count;
     }
 
-    private Cell GetRandomFreePath()
+    private Cell GetRandomFreeUnitCell()
     {
         Cell cell;
         Vector2Int pos = new Vector2Int();
@@ -162,6 +163,22 @@ public class MazePopulator
             pos.y = cell.y;
         }
         while (pos.Equals(startPos) || pos.Equals(ExitPos) || !Maze.Instance.CanMoveTo(pos));
+
+        return cell;
+    }
+
+    private Cell GetRandomFreeItemCell()
+    {
+        Cell cell;
+        Vector2Int pos = new Vector2Int();
+
+        do
+        {
+            cell = mazePath[Random.Range(0, mazePath.Count)];
+            pos.x = cell.x;
+            pos.y = cell.y;
+        }
+        while (pos.Equals(startPos) || pos.Equals(ExitPos) || mazeData[pos.x, pos.y].item != null);
 
         return cell;
     }
