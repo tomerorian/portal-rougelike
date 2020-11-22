@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] Health health = null;
+    [SerializeField] TurnBasedUnit unit = null;
 
     private void Start()
     {
@@ -14,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDeath()
     {
+        unit.IsActive = false;
         Destroy(gameObject);
     }
 }

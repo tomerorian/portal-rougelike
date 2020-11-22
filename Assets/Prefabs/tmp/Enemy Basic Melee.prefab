@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1380044622716370198}
+  IsActive: 1
 --- !u!114 &5525989342463279615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1718745353225626923}
+  unit: {fileID: 1380044622716370185}
 --- !u!114 &1718745353225626923
 MonoBehaviour:
   m_ObjectHideFlags: 0
