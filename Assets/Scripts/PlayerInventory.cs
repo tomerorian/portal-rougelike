@@ -28,6 +28,7 @@ public class PlayerInventory : IEnumerable
             {
                 items[i] = item;
                 item.transform.parent = inventoryItemsParent.transform;
+                item.transform.localPosition = Vector3.zero;
                 return true;
             }
         }

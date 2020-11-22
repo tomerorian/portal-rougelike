@@ -35,7 +35,6 @@ public class GameSession : MonoBehaviour
         playerMaxHealth = startingPlayerMaxHealth;
 
         playerInventory = new PlayerInventory(playerInventoryItemsParent);
-        playerInventoryItemsParent.SetActive(false);
     }
 
     #region Singleton
