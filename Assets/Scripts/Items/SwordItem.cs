@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CellData
+public class SwordItem : Item
 {
-    public MazeUnit occupant;
-    public Item item;
+    
 }

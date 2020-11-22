@@ -52,7 +52,7 @@ public class Maze : MonoBehaviour
             }
         }
 
-        mazePopulator = new MazePopulator(maze, startPos);
+        mazePopulator = new MazePopulator(maze, mazeData, startPos);
     }
 
     private void CreateSingleton()

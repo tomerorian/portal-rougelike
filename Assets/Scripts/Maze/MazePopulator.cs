@@ -8,15 +8,17 @@ public class MazePopulator
     const int EXIT_DISTANCE_GAP_FROM_MAX = 5;
 
     Cell[,] maze;
+    CellData[,] mazeData;
     List<Cell> mazePath;
     Vector2Int startPos;
     int maxDistanceFromStart;
 
     public Vector2Int ExitPos { get; private set; }
 
-    public MazePopulator(Cell[,] maze, Vector2Int startPos)
+    public MazePopulator(Cell[,] maze, CellData[,] mazeData, Vector2Int startPos)
     {
         this.maze = maze;
+        this.mazeData = mazeData;
         this.startPos = startPos;
 
         mazePath = new List<Cell>();
@@ -29,6 +31,7 @@ public class MazePopulator
 
         PlaceExit();
         PopulateEnemies();
+        PopulateItems();
     }
 
     #region Prep
@@ -102,6 +105,15 @@ public class MazePopulator
 
             Object.Instantiate(PrefabCache.Instance.Enemy, new Vector3(randomSpawnPoint.x, randomSpawnPoint.y, 0), Quaternion.identity);
         }
+    }
+    #endregion
+
+    #region Item Population
+    private void PopulateItems()
+    {
+        Cell randomFreePoint = GetRandomFreePath();
+
+        Object.Instantiate(PrefabCache.Instance.Sword, Maze.Instance.MazeToWorldPos(new Vector2Int(randomFreePoint.x, randomFreePoint.y)), Quaternion.identity);
     }
     #endregion
 

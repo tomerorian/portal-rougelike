@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1380044622716370195, guid: f70771f285105c14f888312ba2ef7fd2, type: 3}
+  Sword: {fileID: 3800345719471830432, guid: e98d8224a481fc8438d1ed9df2b224d1, type: 3}
