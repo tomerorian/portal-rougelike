@@ -103,7 +103,7 @@ public class MazePopulator
         {
             Cell randomSpawnPoint = GetRandomFreePath();
 
-            Object.Instantiate(PrefabCache.Instance.Enemy, new Vector3(randomSpawnPoint.x, randomSpawnPoint.y, 0), Quaternion.identity);
+            InstantiateInCell(PrefabCache.Instance.Enemy, randomSpawnPoint);
         }
     }
     #endregion
@@ -113,7 +113,7 @@ public class MazePopulator
     {
         Cell randomFreePoint = GetRandomFreePath();
 
-        Object.Instantiate(PrefabCache.Instance.Sword, Maze.Instance.MazeToWorldPos(new Vector2Int(randomFreePoint.x, randomFreePoint.y)), Quaternion.identity);
+        InstantiateInCell(PrefabCache.Instance.Sword, randomFreePoint);
     }
     #endregion
 
@@ -163,6 +163,11 @@ public class MazePopulator
         while (pos.Equals(startPos) || pos.Equals(ExitPos) || !Maze.Instance.CanMoveTo(pos));
 
         return cell;
+    }
+
+    private T InstantiateInCell<T>(T prefab, Cell cell) where T : Object
+    {
+        return Object.Instantiate(prefab, Maze.Instance.MazeToWorldPos(new Vector2Int(cell.x, cell.y)), Quaternion.identity);
     }
     #endregion
 }
