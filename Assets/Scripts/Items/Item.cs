@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    [Header("Refs")]
+    [SerializeField] SpriteRenderer spriteRenderer = null;
+
     protected bool isActivated = false;
 
     public void Activate()
@@ -14,5 +17,10 @@ public abstract class Item : MonoBehaviour
     protected void Deactivate()
     {
         isActivated = false;
+    }
+
+    public SpriteRenderer GetSpriteRenderer()
+    {
+        return spriteRenderer;
     }
 }

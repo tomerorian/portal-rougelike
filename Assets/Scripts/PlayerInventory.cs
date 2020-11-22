@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerInventory : IEnumerable
 {
-    const int PLAYER_INVENTORY_SLOTS = 5;
+    public const int PLAYER_INVENTORY_SLOTS = 5;
 
     Item[] items = new Item[PLAYER_INVENTORY_SLOTS];
 
