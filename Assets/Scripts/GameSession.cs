@@ -19,6 +19,8 @@ public class GameSession : MonoBehaviour
 
     GameObject player = null;
 
+    public PlayerInventory playerInventory { get; private set; } = new PlayerInventory();
+
     private void Awake()
     {
         if (!SetupSingleton()) { return; }
