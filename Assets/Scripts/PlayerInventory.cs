@@ -56,11 +56,27 @@ public class PlayerInventory : IEnumerable
         return items[index];
     }
 
-    public void RemoveItemAt(int index)
+    public Item RemoveItemAt(int index)
     {
-        if (index >= items.Length) { return; }
+        if (index >= items.Length) { return null; }
 
+        Item item = items[index];
         items[index] = null;
+
+        return item;
+    }
+
+    public void Clear()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            Item item = RemoveItemAt(i);
+
+            if (item)
+            {
+                GameObject.Destroy(item.gameObject);
+            }
+        }
     }
 
     #region IEnumerable

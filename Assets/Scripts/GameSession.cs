@@ -31,10 +31,9 @@ public class GameSession : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        playerCurrentHealth = startingPlayerHealth;
-        playerMaxHealth = startingPlayerMaxHealth;
-
         playerInventory = new PlayerInventory(playerInventoryItemsParent);
+
+        InitGame();
     }
 
     #region Singleton
@@ -89,10 +88,16 @@ public class GameSession : MonoBehaviour
 
     public void OnPlayerDeath()
     {
+        InitGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    private void InitGame()
+    {
         levelsCompleted = 0;
         playerCurrentHealth = startingPlayerHealth;
         playerMaxHealth = startingPlayerMaxHealth;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        playerInventory.Clear();
     }
 
     public int GetLevel()
