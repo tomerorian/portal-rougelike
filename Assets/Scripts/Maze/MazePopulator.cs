@@ -112,7 +112,7 @@ public class MazePopulator
     #region Item Population
     private void PopulateItems()
     {
-        Cell cell = GetRandomFreeItemCell();
+        Cell cell = maze[startPos.x, startPos.y]; //GetRandomFreeItemCell();
 
         Item item = InstantiateInCell(PrefabCache.Instance.Sword, cell);
         mazeData[cell.x, cell.y].item = item;
