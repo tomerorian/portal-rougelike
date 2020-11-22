@@ -14,7 +14,7 @@ public abstract class Item : MonoBehaviour
         enabled = false;
     }
 
-    public void Activate()
+    public virtual void Activate()
     {
         enabled = true;
         isActivated = true;
@@ -22,7 +22,7 @@ public abstract class Item : MonoBehaviour
         GameSession.Instance.playerController.enabled = false;
     }
 
-    protected void Deactivate()
+    protected virtual void Deactivate()
     {
         enabled = false;
         isActivated = false;
