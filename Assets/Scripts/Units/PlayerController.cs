@@ -59,11 +59,18 @@ public class PlayerController : MazeUnit
             if (GameSession.Instance.playerInventory.IsFull()) { return false; }
 
             Vector2Int pos = movement.GetMazePos();
-            Item item = Maze.Instance.TakeItem(pos);
+            Item item = Maze.Instance.GetItem(pos);
 
             if (item == null) { return false; }
 
-            return GameSession.Instance.playerInventory.AttemptAddItem(item);
+            if (GameSession.Instance.playerInventory.AttemptAddItem(item))
+            {
+                Maze.Instance.RemoveItemAt(pos);
+                item.gameObject.SetActive(false);
+                return true;
+            }
+
+            return false;
         }
 
         return false;
