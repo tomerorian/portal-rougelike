@@ -66,7 +66,6 @@ public class PlayerController : MazeUnit
             if (GameSession.Instance.playerInventory.AttemptAddItem(item))
             {
                 Maze.Instance.RemoveItemAt(pos);
-                item.gameObject.SetActive(false);
                 return true;
             }
 

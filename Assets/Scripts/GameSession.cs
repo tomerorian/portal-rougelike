@@ -8,6 +8,9 @@ public class GameSession : MonoBehaviour
 {
     public static GameSession Instance { get; private set; }
 
+    [Header("Refs")]
+    public GameObject inventoryItemsParent = null;
+
     [Header("Config")]
     [SerializeField] int startingPlayerHealth = 5;
     [SerializeField] int startingPlayerMaxHealth = 5;
@@ -29,6 +32,8 @@ public class GameSession : MonoBehaviour
 
         playerCurrentHealth = startingPlayerHealth;
         playerMaxHealth = startingPlayerMaxHealth;
+
+        inventoryItemsParent.SetActive(false);
     }
 
     #region Singleton

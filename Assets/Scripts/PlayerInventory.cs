@@ -24,6 +24,7 @@ public class PlayerInventory : IEnumerable
             if (items[i] == null)
             {
                 items[i] = item;
+                item.transform.parent = GameSession.Instance.inventoryItemsParent.transform;
                 return true;
             }
         }
