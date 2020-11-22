@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class SwordItem : Item
 {
-    [SerializeField] GameObject attackIndicator = null;
+    [SerializeField] GameObject attackIndicatorPrefab = null;
+
+    GameObject attackIndicator = null;
 
     public override void Activate()
     {
         base.Activate();
 
-        attackIndicator.SetActive(true);
+        attackIndicator = Instantiate(attackIndicatorPrefab, GameSession.Instance.player.transform);
     }
 
     protected override void Deactivate()
     {
         base.Deactivate();
 
-        attackIndicator.SetActive(false);
+        Destroy(attackIndicator);
     }
 
     private void Update()
