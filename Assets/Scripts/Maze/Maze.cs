@@ -22,6 +22,7 @@ public class Maze : MonoBehaviour
     [SerializeField] int height = 50;
     [Range(0f, 0.2f)]
     [SerializeField] float adjacentCellChance = 0.06f;
+    [SerializeField] int borderWallWidth = 5;
 
     [Header("Debug")]
     [Tooltip("Will set a forced random seed if set to anything but 0")]
@@ -103,26 +104,39 @@ public class Maze : MonoBehaviour
     {
         Vector3Int pos = new Vector3Int(0, 0, 0);
 
-        for (int x = -1; x <= width; x++)
+        for (int x = 0 - borderWallWidth; x < width + borderWallWidth; x++)
         {
             pos.x = x;
 
-            pos.y = -1;
-            wallTilemap.SetTile(pos, wallTile);
+            for (int y = -1; y >= -borderWallWidth; y--)
+            {
+                pos.y = y;
+                wallTilemap.SetTile(pos, wallTile);
+            }
 
-            pos.y = height;
-            wallTilemap.SetTile(pos, wallTile);
+            for (int y = height; y < height + borderWallWidth; y++)
+            {
+                pos.y = y;
+                wallTilemap.SetTile(pos, wallTile);
+            }
         }
 
-        for (int y = 0; y < width; y++)
+        for (int y = 0; y < height; y++)
         {
             pos.y = y;
 
-            pos.x = -1;
-            wallTilemap.SetTile(pos, wallTile);
 
-            pos.x = width;
-            wallTilemap.SetTile(pos, wallTile);
+            for (int x = -1; x >= -borderWallWidth; x--)
+            {
+                pos.x = x;
+                wallTilemap.SetTile(pos, wallTile);
+            }
+
+            for (int x = height; x < width + borderWallWidth; x++)
+            {
+                pos.x = x;
+                wallTilemap.SetTile(pos, wallTile);
+            }
         }
     }
 
