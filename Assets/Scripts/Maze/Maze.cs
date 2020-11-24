@@ -10,8 +10,10 @@ public class Maze : MonoBehaviour
     public static Maze Instance { get; private set; }
 
     [Header("Refs")]
-    [SerializeField] Tilemap layoutTileMap = null;
-    [SerializeField] TileBase tile = null;
+    [SerializeField] Tilemap pathTilemap = null;
+    [SerializeField] TileBase pathTile = null;
+    [SerializeField] Tilemap wallTilemap = null;
+    [SerializeField] TileBase wallTile = null;
     [SerializeField] GameObject entrancePrefab = null;
     [SerializeField] GameObject exitPrefab = null;
 
@@ -81,11 +83,16 @@ public class Maze : MonoBehaviour
 
         foreach (Cell cell in maze)
         {
+            pos.x = cell.x;
+            pos.y = cell.y;
+
             if (cell.isPath)
             {
-                pos.x = cell.x;
-                pos.y = cell.y;
-                layoutTileMap.SetTile(pos, tile);
+                pathTilemap.SetTile(pos, pathTile);
+            }
+            else
+            {
+                wallTilemap.SetTile(pos, wallTile);
             }
         }
     }
@@ -107,12 +114,12 @@ public class Maze : MonoBehaviour
 
     public Vector2 MazeToWorldPos(Vector2Int pos)
     {
-        return layoutTileMap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
+        return pathTilemap.GetCellCenterWorld(new Vector3Int(pos.x, pos.y, 0));
     }
 
     public Vector2Int WorldToMazePos(Vector2 pos)
     {
-        Vector3Int mazePos = layoutTileMap.WorldToCell(new Vector3(pos.x, pos.y, 0));
+        Vector3Int mazePos = pathTilemap.WorldToCell(new Vector3(pos.x, pos.y, 0));
         return new Vector2Int(mazePos.x, mazePos.y);
     }
 
@@ -229,7 +236,7 @@ public class Maze : MonoBehaviour
         style.normal.textColor = Color.black;
         style.alignment = TextAnchor.MiddleCenter;
 
-        Vector3 labelOffset = new Vector3(0, layoutTileMap.cellSize.y / 4f);
+        Vector3 labelOffset = new Vector3(0, pathTilemap.cellSize.y / 4f);
 
         foreach (Cell cell in maze)
         {
@@ -237,7 +244,7 @@ public class Maze : MonoBehaviour
             {
                 pos.x = cell.x;
                 pos.y = cell.y;
-                Vector3 labelPos = layoutTileMap.GetCellCenterWorld(pos);
+                Vector3 labelPos = pathTilemap.GetCellCenterWorld(pos);
 
                 Handles.Label(labelPos + labelOffset, cell.distanceFromStart.ToString(), style);
             }
