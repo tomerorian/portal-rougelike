@@ -38,6 +38,54 @@ TextureImporter:
   - first:
       213: 1339338083759138603
     second: PlainWallTiles-Sheet_11
+  - first:
+      213: 4443667732640397713
+    second: PlainWallTiles-Sheet_0
+  - first:
+      213: 1594142555817159074
+    second: PlainWallTiles-Sheet_1
+  - first:
+      213: 8881468944194527304
+    second: PlainWallTiles-Sheet_2
+  - first:
+      213: 4686579316132024603
+    second: PlainWallTiles-Sheet_3
+  - first:
+      213: -4509925141345585507
+    second: PlainWallTiles-Sheet_4
+  - first:
+      213: -7652712202447047072
+    second: PlainWallTiles-Sheet_5
+  - first:
+      213: -110584789747681838
+    second: PlainWallTiles-Sheet_6
+  - first:
+      213: 4790620771861987366
+    second: PlainWallTiles-Sheet_7
+  - first:
+      213: -5294724420830222535
+    second: PlainWallTiles-Sheet_8
+  - first:
+      213: -7480740356653162255
+    second: PlainWallTiles-Sheet_9
+  - first:
+      213: 5785434407661900334
+    second: PlainWallTiles-Sheet_10
+  - first:
+      213: -5014002642600866921
+    second: PlainWallTiles-Sheet_11
+  - first:
+      213: 947234367988924476
+    second: PlainWallTiles-Sheet_12
+  - first:
+      213: -7830452048857649027
+    second: PlainWallTiles-Sheet_13
+  - first:
+      213: -4315045714259178576
+    second: PlainWallTiles-Sheet_14
+  - first:
+      213: 1277773141436114020
+    second: PlainWallTiles-Sheet_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -161,8 +209,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1827b813e3cbed90800000000000000
-      internalID: -7067339810088212454
+      spriteID: 19975ef52441bad30800000000000000
+      internalID: 4443667732640397713
       vertices: []
       indices: 
       edges: []
@@ -182,8 +230,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ede7525583acd500800000000000000
-      internalID: 422392258073456105
+      spriteID: 2a9a0d855388f1610800000000000000
+      internalID: 1594142555817159074
       vertices: []
       indices: 
       edges: []
@@ -203,8 +251,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c0c9d7a657e090b0800000000000000
-      internalID: -5723820767018630969
+      spriteID: 840e06ed2f0514b70800000000000000
+      internalID: 8881468944194527304
       vertices: []
       indices: 
       edges: []
@@ -224,8 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e07e4c41daa18820800000000000000
-      internalID: 2918801849417887971
+      spriteID: b111eb5be031a0140800000000000000
+      internalID: 4686579316132024603
       vertices: []
       indices: 
       edges: []
@@ -245,8 +293,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51291719425f38a30800000000000000
-      internalID: 4216483213556683285
+      spriteID: d963e728af68961c0800000000000000
+      internalID: -4509925141345585507
       vertices: []
       indices: 
       edges: []
@@ -266,8 +314,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3a8b053078da0140800000000000000
-      internalID: 4686796338670307899
+      spriteID: 066b8d43cca1cc590800000000000000
+      internalID: -7652712202447047072
       vertices: []
       indices: 
       edges: []
@@ -287,8 +335,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a034d3b4c10039b30800000000000000
-      internalID: 4292774991335605002
+      spriteID: 2d5378938bf177ef0800000000000000
+      internalID: -110584789747681838
       vertices: []
       indices: 
       edges: []
@@ -308,8 +356,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5aebb7f0c068081f0800000000000000
-      internalID: -1044687727192457563
+      spriteID: 6200170d534bb7240800000000000000
+      internalID: 4790620771861987366
       vertices: []
       indices: 
       edges: []
@@ -329,8 +377,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 259fa06d931d94760800000000000000
-      internalID: 7442709905540839762
+      spriteID: 93724d0213c5586b0800000000000000
+      internalID: -5294724420830222535
       vertices: []
       indices: 
       edges: []
@@ -350,8 +398,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 200cf51382a3bd2d0800000000000000
-      internalID: -3252942361543589886
+      spriteID: 1f062c0c7421f2890800000000000000
+      internalID: -7480740356653162255
       vertices: []
       indices: 
       edges: []
@@ -371,8 +419,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba6a71a6835a916d0800000000000000
-      internalID: -3019200413458520405
+      spriteID: e229204f0fdf94050800000000000000
+      internalID: 5785434407661900334
       vertices: []
       indices: 
       edges: []
@@ -392,8 +440,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b27ad9c14e8469210800000000000000
-      internalID: 1339338083759138603
+      spriteID: 79bc7e0792faa6ab0800000000000000
+      internalID: -5014002642600866921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlainWallTiles-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c30850793a0452d00800000000000000
+      internalID: 947234367988924476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlainWallTiles-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d703c1d5955a45390800000000000000
+      internalID: -7830452048857649027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlainWallTiles-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb8204f8c0ed14c0800000000000000
+      internalID: -4315045714259178576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlainWallTiles-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 464a5d6f6ef8bb110800000000000000
+      internalID: 1277773141436114020
       vertices: []
       indices: 
       edges: []
