@@ -95,6 +95,35 @@ public class Maze : MonoBehaviour
                 wallTilemap.SetTile(pos, wallTile);
             }
         }
+
+        SetBorderTiles();
+    }
+
+    private void SetBorderTiles()
+    {
+        Vector3Int pos = new Vector3Int(0, 0, 0);
+
+        for (int x = -1; x <= width; x++)
+        {
+            pos.x = x;
+
+            pos.y = -1;
+            wallTilemap.SetTile(pos, wallTile);
+
+            pos.y = height;
+            wallTilemap.SetTile(pos, wallTile);
+        }
+
+        for (int y = 0; y < width; y++)
+        {
+            pos.y = y;
+
+            pos.x = -1;
+            wallTilemap.SetTile(pos, wallTile);
+
+            pos.x = width;
+            wallTilemap.SetTile(pos, wallTile);
+        }
     }
 
     private void CreateEntrance()
