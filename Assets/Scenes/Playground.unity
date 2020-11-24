@@ -1892,11 +1892,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Maze
       objectReference: {fileID: 0}
-    - target: {fileID: 5037720155232373047, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b,
-        type: 3}
-      propertyPath: m_TagString
-      value: Maze
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 177a29a1aaba85d4d9e1e7bf58e85e4b, type: 3}
 --- !u!1001 &5420825238620072508

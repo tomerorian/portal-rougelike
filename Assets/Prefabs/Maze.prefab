@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 5037720155232373044}
   m_Layer: 0
   m_Name: Maze
-  m_TagString: Untagged
+  m_TagString: Maze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,7 +667,7 @@ MonoBehaviour:
   pathTilemap: {fileID: 5037720154662771977}
   pathTile: {fileID: 11400000, guid: 2bd5f0eb739c6b64f81243e76708afcf, type: 2}
   wallTilemap: {fileID: 2865643796192029360}
-  wallTile: {fileID: 11400000, guid: 628c7cd41b981fa4ead3edf2de7c06b5, type: 2}
+  wallTile: {fileID: 11400000, guid: 41c432cb0de58194aa13330306a17e1c, type: 2}
   entrancePrefab: {fileID: 5551779580584383361, guid: f6874b2465aeb9a4d8e0d3fcb0f54f15,
     type: 3}
   exitPrefab: {fileID: 4599388075180143319, guid: 6ff01ffa34986294ab21f9b006d065fe,
