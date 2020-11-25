@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     private void OnDeath()
     {
         unit.IsActive = false;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        Destroy(gameObject, 1f);
     }
 }
