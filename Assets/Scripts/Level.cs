@@ -62,6 +62,8 @@ public class Level : MonoBehaviour
 
     private IEnumerator DoUnitsTurn()
     {
+        yield return null;
+
         foreach (TurnBasedUnit unit in units)
         {
             StartCoroutine(unit.TakeTurn());
