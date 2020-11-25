@@ -13,6 +13,21 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
     {
         DidAction = false;
 
+        MazeUnit possibleTarget = GetPossibleTarget();
+
+        if (possibleTarget)
+        {
+            Attack(possibleTarget);
+            DidAction = true;
+
+            animator.SetTrigger("Attack");
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private MazeUnit GetPossibleTarget()
+    {
         MazeMovement unitMovement = unit.GetMovement();
         Maze maze = Maze.Instance;
 
@@ -20,37 +35,31 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
         if (IsTargetValid(possibleTarget))
         {
-            Attack(possibleTarget);
-            DidAction = true;
-            yield break;
+            return possibleTarget;
         }
 
         possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.right);
 
         if (IsTargetValid(possibleTarget))
         {
-            Attack(possibleTarget);
-            DidAction = true;
-            yield break;
+            return possibleTarget;
         }
 
         possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.down);
 
         if (IsTargetValid(possibleTarget))
         {
-            Attack(possibleTarget);
-            DidAction = true;
-            yield break;
+            return possibleTarget;
         }
 
         possibleTarget = maze.GetOccupant(unitMovement.GetMazePos() + Vector2Int.left);
 
         if (IsTargetValid(possibleTarget))
         {
-            Attack(possibleTarget);
-            DidAction = true;
-            yield break;
+            return possibleTarget;
         }
+
+        return null;
     }
 
     private bool IsTargetValid(MazeUnit target)

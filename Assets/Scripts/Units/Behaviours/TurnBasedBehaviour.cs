@@ -9,6 +9,8 @@ public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedB
 
     [SerializeField] protected int priority = 100;
 
+    protected Animator animator;
+
     public bool DidAction { get; protected set; }
 
     protected TurnBasedUnit unit;
@@ -17,6 +19,8 @@ public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedB
     {
         unit = GetComponent<TurnBasedUnit>();
         unit.RegisterBehaviour(this);
+
+        animator = GetComponent<Animator>();
     }
 
     private void OnDestroy()
