@@ -22,7 +22,12 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
             animator.SetTrigger("Attack");
 
-            yield return new WaitForSeconds(0.5f);
+            yield return null;
+
+            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                yield return null;
+            }
         }
     }
 
