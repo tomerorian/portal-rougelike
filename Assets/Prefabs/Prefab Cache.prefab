@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1380044622716370185, guid: f70771f285105c14f888312ba2ef7fd2, type: 3}
+  Slime: {fileID: 8311123150427824410, guid: 5e981f4f372f19b4b89777b9d3601253, type: 3}
   Sword: {fileID: 3800345719471830432, guid: e98d8224a481fc8438d1ed9df2b224d1, type: 3}
