@@ -39,4 +39,9 @@ public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedB
     {
         return spriteRenderer.isVisible;
     }
+
+    protected bool IsAnimationIdle()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
+    }
 }

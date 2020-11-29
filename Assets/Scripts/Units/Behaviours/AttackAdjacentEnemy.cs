@@ -29,7 +29,7 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
 
             yield return null;
 
-            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            while (!IsAnimationIdle())
             {
                 yield return null;
             }
