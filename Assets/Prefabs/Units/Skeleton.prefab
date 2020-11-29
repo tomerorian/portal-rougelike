@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8440eb29f754684695a6d3a0258d44c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 100
+  priority: 99
   projectilePrefab: {fileID: 4007771041777744276, guid: 874c0aa9f3f57ea479e2b3a0efb3a28a,
     type: 3}
-  visionRange: 5
+  visionRange: 3
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
@@ -26,6 +26,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   attackDamage: 1
+--- !u!114 &73800430254349881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5604517894038747662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7a54c6dfd852441a29b271d615113f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 100
 --- !u!1001 &6836983278533969693
 PrefabInstance:
   m_ObjectHideFlags: 0
