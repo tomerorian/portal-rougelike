@@ -26,6 +26,7 @@ public class PlayerInventory : IEnumerable
         {
             if (items[i] == null)
             {
+                item.SetInventoryIndex(i);
                 items[i] = item;
                 item.transform.parent = inventoryItemsParent.transform;
                 item.transform.localPosition = Vector3.zero;

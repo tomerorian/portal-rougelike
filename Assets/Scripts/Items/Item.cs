@@ -8,6 +8,12 @@ public abstract class Item : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRenderer = null;
 
     protected bool isActivated = false;
+    protected int inventoryIndex = -1;
+
+    public void SetInventoryIndex(int index)
+    {
+        inventoryIndex = index;
+    }
 
     private void Awake()
     {

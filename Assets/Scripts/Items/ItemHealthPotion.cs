@@ -11,7 +11,7 @@ public class ItemHealthPotion : Item
     private void Update()
     {
         Heal();
-        // TODO: Remove item
+        GameSession.Instance.playerInventory.RemoveItemAt(inventoryIndex);
         Used();
     }
 
