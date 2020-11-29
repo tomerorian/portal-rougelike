@@ -8,7 +8,7 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
     [Header("Config")]
     [SerializeField] float visionRange = 5f;
     [SerializeField] LayerMask enemyLayers = 0;
-    [SerializeField] LayerMask visiionBlockingLayers = 0; // TODO: Fix typo
+    [SerializeField] LayerMask visionBlockingLayers = 0;
     [SerializeField] int pursuitSteps = 5;
     [SerializeField] float turnsPerMove = 2;
 
@@ -27,7 +27,7 @@ public class MoveToVisibleEnemy : TurnBasedBehaviour
         // Still lock on targets even if we can't move right now
         if (!target)
         {
-            target = VisionUtils.FindVisibleEnemy(transform, visionRange, enemyLayers, visiionBlockingLayers);
+            target = VisionUtils.FindVisibleEnemy(transform, visionRange, enemyLayers, visionBlockingLayers);
         }
 
         if (turnsSinceLastMove != -1 && turnsSinceLastMove < turnsPerMove)
