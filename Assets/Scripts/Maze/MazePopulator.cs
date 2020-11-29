@@ -103,7 +103,7 @@ public class MazePopulator
         {
             Cell cell = GetRandomFreeUnitCell();
 
-            MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Slime, cell);
+            MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Skeleton, cell);
             mazeData[cell.x, cell.y].occupant = enemy;
         }
     }

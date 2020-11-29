@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d45160e0a96824fbbab65bcdd55f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1380044622716370185, guid: f70771f285105c14f888312ba2ef7fd2, type: 3}
   Slime: {fileID: 8311123150427824410, guid: 5e981f4f372f19b4b89777b9d3601253, type: 3}
+  Skeleton: {fileID: 5604517894038747668, guid: 681aabdad56a4e447a196977f337d154,
+    type: 3}
   Sword: {fileID: 3800345719471830432, guid: e98d8224a481fc8438d1ed9df2b224d1, type: 3}
   HealthPotion: {fileID: -1710884304153528650, guid: 1f474b6b1439b594db2b6fede57a31ff,
     type: 3}

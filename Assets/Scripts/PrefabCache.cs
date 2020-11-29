@@ -26,8 +26,8 @@ public class PrefabCache : MonoBehaviour
     #endregion
 
     [Header("Enemies")]
-    public MazeUnit Enemy;
     public MazeUnit Slime;
+    public MazeUnit Skeleton;
 
     [Header("Items")]
     public Item Sword;
