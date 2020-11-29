@@ -12,6 +12,7 @@ public class ShootAtVisibleEnemy : TurnBasedBehaviour
     [SerializeField] float visionRange = 5f;
     [SerializeField] LayerMask enemyLayers = 0;
     [SerializeField] LayerMask visionBlockingLayers = 0;
+    [SerializeField] LayerMask projectileBlockingLayers = 0;
     [SerializeField] int attackDamage = 1;
 
     Projectile projectileShot = null;
@@ -51,5 +52,17 @@ public class ShootAtVisibleEnemy : TurnBasedBehaviour
     {
         projectileShot = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectileShot.SetTarget(target.transform);
+        projectileShot.SetObstacleMask(projectileBlockingLayers);
+        projectileShot.onHit += OnHit;
+    }
+
+    private void OnHit(GameObject other)
+    {
+        Health health = other.GetComponent<Health>();
+
+        if (health)
+        {
+            health.TakeDamage(attackDamage);
+        }
     }
 }

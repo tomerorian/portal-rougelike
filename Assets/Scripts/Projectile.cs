@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public delegate void OnHit(GameObject other);
+    public event OnHit onHit;
+
     [Header("Config")]
     [SerializeField] Vector2 originalOrientation = Vector2.right;
     [SerializeField] float speed = 8f;
 
     Transform target = null;
+    LayerMask obstacles = 0;
 
     public void SetTarget(Transform target)
     {
         this.target = target;
         LookAtTarget();
+    }
+
+    public void SetObstacleMask(LayerMask obstacles)
+    {
+        this.obstacles = obstacles;
     }
 
     private void LookAtTarget()
@@ -45,6 +54,12 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject == target.gameObject)
         {
+            onHit?.Invoke(collision.gameObject);
+            Destroy(gameObject);
+        }
+        else if (((1 << collision.gameObject.layer) & obstacles) != 0)
+        {
+            onHit?.Invoke(collision.gameObject);
             Destroy(gameObject);
         }
     }
