@@ -19,6 +19,7 @@ public class ShootAtVisibleEnemy : TurnBasedBehaviour
     public override IEnumerator TakeTurn()
     {
         DidAction = false;
+        projectileShot = null;
 
         MazeUnit possibleTarget = VisionUtils.FindVisibleEnemy(transform, visionRange, enemyLayers, visionBlockingLayers);
 
@@ -27,16 +28,19 @@ public class ShootAtVisibleEnemy : TurnBasedBehaviour
             Attack(possibleTarget);
             DidAction = true;
 
-            if (!ShouldAnimate())
+            if (ShouldAnimate())
             {
-                yield break;
+                animator.SetTrigger("Attack");
+
+                yield return null;
+
+                while (!IsAnimationIdle())
+                {
+                    yield return null;
+                }
             }
 
-            animator.SetTrigger("Attack");
-
-            yield return null;
-
-            while (!IsAnimationIdle())
+            while (projectileShot)
             {
                 yield return null;
             }
