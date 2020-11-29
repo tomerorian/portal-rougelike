@@ -29,6 +29,12 @@ public class PlayerController : MazeUnit
             return;
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            level.OnPlayerTookAction();
+            return;
+        }
+
         HandleItemUse();
     }
 
