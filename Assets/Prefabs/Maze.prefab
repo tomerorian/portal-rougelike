@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathTilemap: {fileID: 5037720154662771977}
-  pathTile: {fileID: 11400000, guid: f57b8182ace9c934897b0ae80557a785, type: 2}
+  pathTile: {fileID: 11400000, guid: 67eabe91a74eac540a914e9f2b25a198, type: 2}
   wallTilemap: {fileID: 2865643796192029360}
   wallTile: {fileID: 11400000, guid: 00e4c3f32c9efde40a95231dd9592197, type: 2}
   entrancePrefab: {fileID: 5551779580584383361, guid: f6874b2465aeb9a4d8e0d3fcb0f54f15,
