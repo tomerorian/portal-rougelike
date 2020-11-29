@@ -31,4 +31,5 @@ public class PrefabCache : MonoBehaviour
 
     [Header("Items")]
     public Item Sword;
+    public Item HealthPotion;
 }

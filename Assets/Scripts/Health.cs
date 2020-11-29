@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     public delegate void OnDamage(int amount);
     public event OnDamage onDamage;
 
+    public delegate void OnHeal(int amount);
+    public event OnHeal onHeal;
+
     [Header("Config")]
     [SerializeField] int maxHealth = 1;
 
@@ -63,5 +66,12 @@ public class Health : MonoBehaviour
         {
             onDeath?.Invoke();
         }
+    }
+
+    public void TakeHeal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+
+        onHeal?.Invoke(amount);
     }
 }

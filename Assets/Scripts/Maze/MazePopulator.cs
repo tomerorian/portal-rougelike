@@ -114,7 +114,7 @@ public class MazePopulator
     {
         Cell cell = maze[startPos.x, startPos.y]; //GetRandomFreeItemCell();
 
-        Item item = InstantiateInCell(PrefabCache.Instance.Sword, cell);
+        Item item = InstantiateInCell(PrefabCache.Instance.HealthPotion, cell);
         mazeData[cell.x, cell.y].item = item;
     }
     #endregion
