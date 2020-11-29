@@ -20,6 +20,11 @@ public class AttackAdjacentEnemy : TurnBasedBehaviour
             Attack(possibleTarget);
             DidAction = true;
 
+            if (!ShouldAnimate())
+            {
+                yield break;
+            }
+
             animator.SetTrigger("Attack");
 
             yield return null;

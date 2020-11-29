@@ -10,6 +10,7 @@ public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedB
     [SerializeField] protected int priority = 100;
 
     protected Animator animator;
+    protected SpriteRenderer spriteRenderer;
 
     public bool DidAction { get; protected set; }
 
@@ -21,6 +22,7 @@ public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedB
         unit.RegisterBehaviour(this);
 
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void OnDestroy()
@@ -31,5 +33,10 @@ public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedB
     public int CompareTo(TurnBasedBehaviour other)
     {
         return this.priority - other.priority;
+    }
+
+    protected bool ShouldAnimate()
+    {
+        return spriteRenderer.isVisible;
     }
 }
