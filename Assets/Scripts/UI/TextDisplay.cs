@@ -39,25 +39,33 @@ public class TextDisplay : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            displayTextContainer.SetActive(false);
+            HideDisplay();
         }
     }
 
     public void DisplayText(string text, float duration = 0)
     {
+        Level.Instance.PauseGame();
+
         displayText.text = text;
         displayTextContainer.SetActive(true);
 
         if (duration > 0)
         {
-            StartCoroutine(HideDisplay(duration));
+            StartCoroutine(WaitAndHideDisplay(duration));
         }
     }
 
-    private IEnumerator HideDisplay(float delay)
+    private IEnumerator WaitAndHideDisplay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
+        HideDisplay();
+    }
+
+    private void HideDisplay()
+    {
         displayTextContainer.SetActive(false);
+        Level.Instance.UnpauseGame();
     }
 }
