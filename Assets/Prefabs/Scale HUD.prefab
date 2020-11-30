@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 7405370113263673844}
   - component: {fileID: 7405370113263673845}
   - component: {fileID: 7405370113263673834}
+  - component: {fileID: 8618172108973068013}
   m_Layer: 5
   m_Name: Scale HUD
   m_TagString: Untagged
@@ -232,6 +233,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8618172108973068013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405370113263673835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847dc4689fc32834bb7fec88786cf641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayTextContainer: {fileID: 7405370113305322554}
+  displayText: {fileID: 7405370112663982884}
 --- !u!1 &7405370113305322554
 GameObject:
   m_ObjectHideFlags: 0
