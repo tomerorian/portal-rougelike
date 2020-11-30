@@ -8,6 +8,7 @@ public class Level : MonoBehaviour
     public static Level Instance { get; private set; }
 
     bool isPlayerTurn = false;
+    bool isPaused = false;
     List<TurnBasedUnit> units = new List<TurnBasedUnit>();
     List<TurnBasedUnit> removedUnits = new List<TurnBasedUnit>();
 
@@ -27,6 +28,7 @@ public class Level : MonoBehaviour
     private void InitGame()
     {
         isPlayerTurn = true;
+        isPaused = false;
         units.Clear();
         removedUnits.Clear();
     }
@@ -41,9 +43,19 @@ public class Level : MonoBehaviour
         removedUnits.Add(unit);
     }
 
+    public void PauseGame()
+    {
+        isPaused = true;
+    }
+
+    public void UnpauseGame()
+    {
+        isPaused = false;
+    }
+
     public bool IsPlayerTurn()
     {
-        return isPlayerTurn;
+        return isPlayerTurn && !isPaused;
     }
 
     public void OnPlayerReachExit()
