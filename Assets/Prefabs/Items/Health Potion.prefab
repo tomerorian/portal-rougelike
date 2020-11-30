@@ -95,4 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3800345719471830462}
+  description: A strange red liquid in a bottle, you get the feeling it will benefit
+    you to drink it.
   healAmount: 2

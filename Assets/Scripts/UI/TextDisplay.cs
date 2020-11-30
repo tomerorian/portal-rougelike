@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class TextDisplay : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class TextDisplay : MonoBehaviour
     {
         if (!displayTextContainer.activeSelf) { return; }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.I))
         {
             HideDisplay();
         }
@@ -66,6 +67,14 @@ public class TextDisplay : MonoBehaviour
     private void HideDisplay()
     {
         displayTextContainer.SetActive(false);
+
+        StartCoroutine(WaitForFrameAndUnpause());
+    }
+
+    private IEnumerator WaitForFrameAndUnpause()
+    {
+        yield return new WaitForEndOfFrame();
+
         Level.Instance.UnpauseGame();
     }
 }

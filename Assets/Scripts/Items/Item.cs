@@ -7,6 +7,10 @@ public abstract class Item : MonoBehaviour
     [Header("Refs")]
     [SerializeField] SpriteRenderer spriteRenderer = null;
 
+    [Header("Config")]
+    [TextArea(2, 5)]
+    [SerializeField] string description = "Strange item on the floor";
+
     protected bool isActivated = false;
     protected int inventoryIndex = -1;
 
@@ -46,5 +50,10 @@ public abstract class Item : MonoBehaviour
     public SpriteRenderer GetSpriteRenderer()
     {
         return spriteRenderer;
+    }
+
+    public string GetDescription()
+    {
+        return description;
     }
 }

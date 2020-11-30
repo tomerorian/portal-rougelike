@@ -2,6 +2,8 @@
 
 public class PlayerController : MazeUnit
 {
+    const string EMPTY_TILE_DESCRIPTION = "This is just an empty floor tile";
+
     Level level;
 
     protected override void Start()
@@ -32,6 +34,11 @@ public class PlayerController : MazeUnit
         if (Input.GetKeyDown(KeyCode.S))
         {
             level.OnPlayerTookAction();
+            return;
+        }
+
+        if (HandleInspect())
+        {
             return;
         }
 
@@ -115,6 +122,24 @@ public class PlayerController : MazeUnit
         {
             item.Activate();
         }
+    }
+
+    private bool HandleInspect()
+    {
+        if (!Input.GetKeyDown(KeyCode.I)) { return false; }
+
+        Item item = Maze.Instance.GetItem(movement.GetMazePos());
+
+        if (item)
+        {
+            TextDisplay.Instance.DisplayText(item.GetDescription());
+        }
+        else
+        {
+            TextDisplay.Instance.DisplayText(EMPTY_TILE_DESCRIPTION);
+        }
+
+        return true;
     }
 
     private void OnDeath()
