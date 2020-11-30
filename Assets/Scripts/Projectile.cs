@@ -34,17 +34,6 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        // DEBUG
-        if (!target)
-        {
-            target = GameSession.Instance.player.transform;
-        }
-        else
-        {
-            LookAtTarget();
-        }
-        // DEBUG
-
         if (!target) { return; }
 
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
