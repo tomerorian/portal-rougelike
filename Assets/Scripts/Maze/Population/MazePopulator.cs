@@ -17,12 +17,14 @@ public class MazePopulator
     }
 
     const int EXIT_DISTANCE_GAP_FROM_MAX = 5;
+    const int MAX_FAILED_SPAWN_ATTEMPTS = 10;
 
     PopulationData data;
 
     public Vector2Int ExitPos { get { return data.exitPos; } }
 
-    SpawnRule[] spawnRules;
+    SpawnRule[] enemySpawnRules;
+    SpawnRule[] itemSpawnRules;
 
     public MazePopulator(Cell[,] maze, CellData[,] mazeData, Vector2Int startPos)
     {
@@ -37,9 +39,14 @@ public class MazePopulator
 
     private void InitSpawnRules()
     {
-        spawnRules = new SpawnRule[] {
+        enemySpawnRules = new SpawnRule[] {
             new SpawnSlime(1, 1),
             new SpawnSkeleton(4, 3),
+        };
+
+        itemSpawnRules = new SpawnRule[] {
+            new SpawnHealthPotion(1, 2),
+            new SpawnSword(1, 3),
         };
     }
 
@@ -115,34 +122,41 @@ public class MazePopulator
     #region Enemy Population
     private void PopulateEnemies()
     {
-        int level = GameSession.Instance.GetLevel();
-        int relativeDifficulty = level; // What rules can spawn
-        int difficulty = Mathf.FloorToInt(5f * (1 + Mathf.Log(level, 2))); // How many of them can spawn
-
-        while (difficulty > 0)
-        {
-            SpawnRule rule = spawnRules[Random.Range(0, spawnRules.Length)];
-            
-            if (rule.GetRelativeDifficulty() <= relativeDifficulty && difficulty >= rule.GetTotalDifficulty())
-            {
-                if (rule.AttemptSpawn(data))
-                {
-                    difficulty -= rule.GetTotalDifficulty();
-                }
-            }
-        }
+        PopulateRules(enemySpawnRules);
     }
     #endregion
 
     #region Item Population
     private void PopulateItems()
     {
-        Cell cell = data.maze[data.startPos.x, data.startPos.y]; //GetRandomFreeItemCell();
-
-        Item item = InstantiateInCell(PrefabCache.Instance.HealthPotion, cell);
-        data.mazeData[cell.x, cell.y].item = item;
+        PopulateRules(itemSpawnRules);
     }
     #endregion
+
+    private void PopulateRules(SpawnRule[] rules)
+    {
+        int level = GameSession.Instance.GetLevel();
+        int relativeDifficulty = level; // What rules can spawn
+        int difficulty = Mathf.FloorToInt(5f * (1 + Mathf.Log(level, 2))); // How many of them can spawn
+
+        int failedAttempts = 0;
+
+        while (difficulty > 0 && failedAttempts < MAX_FAILED_SPAWN_ATTEMPTS)
+        {
+            failedAttempts++;
+
+            SpawnRule rule = rules[Random.Range(0, rules.Length)];
+
+            if (rule.GetRelativeDifficulty() <= relativeDifficulty && rule.GetTotalDifficulty() <= difficulty)
+            {
+                if (rule.AttemptSpawn(data))
+                {
+                    difficulty -= rule.GetTotalDifficulty();
+                    failedAttempts = 0;
+                }
+            }
+        }
+    }
 
     #endregion
 }
