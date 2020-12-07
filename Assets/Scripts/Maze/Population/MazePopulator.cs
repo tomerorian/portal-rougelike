@@ -22,6 +22,8 @@ public class MazePopulator
 
     public Vector2Int ExitPos { get { return data.exitPos; } }
 
+    SpawnRule[] spawnRules;
+
     public MazePopulator(Cell[,] maze, CellData[,] mazeData, Vector2Int startPos)
     {
         data.maze = maze;
@@ -29,6 +31,16 @@ public class MazePopulator
         data.startPos = startPos;
 
         data.mazePath = new List<Cell>();
+
+        InitSpawnRules();
+    }
+
+    private void InitSpawnRules()
+    {
+        spawnRules = new SpawnRule[] {
+            new SpawnSlime(1, 1),
+            new SpawnSkeleton(4, 3),
+        };
     }
 
     public void PopulateMaze()
@@ -104,14 +116,20 @@ public class MazePopulator
     private void PopulateEnemies()
     {
         int level = GameSession.Instance.GetLevel();
-        int enemiesToPopulate = Mathf.FloorToInt(5f * (1 + Mathf.Log(level, 2)));
+        int relativeDifficulty = level; // What rules can spawn
+        int difficulty = Mathf.FloorToInt(5f * (1 + Mathf.Log(level, 2))); // How many of them can spawn
 
-        for (int i = 0; i < enemiesToPopulate; i++)
+        while (difficulty > 0)
         {
-            Cell cell = GetRandomFreeUnitCell(data);
-
-            MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Skeleton, cell);
-            data.mazeData[cell.x, cell.y].occupant = enemy;
+            SpawnRule rule = spawnRules[Random.Range(0, spawnRules.Length)];
+            
+            if (rule.GetRelativeDifficulty() <= relativeDifficulty && difficulty >= rule.GetTotalDifficulty())
+            {
+                if (rule.AttemptSpawn(data))
+                {
+                    difficulty -= rule.GetTotalDifficulty();
+                }
+            }
         }
     }
     #endregion
