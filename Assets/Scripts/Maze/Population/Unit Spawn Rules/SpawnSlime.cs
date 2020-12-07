@@ -4,19 +4,14 @@ using UnityEngine;
 using static MazeGeneration;
 using static PopulationUtils;
 
-public class SpawnSlime : SpawnRule
+public class SpawnSlime : SimpleUnitSpawnRule
 {
     public SpawnSlime(int relativeDifficulty, int totalDifficulty) : base (relativeDifficulty, totalDifficulty)
     {
     }
 
-    public override bool AttemptSpawn(MazePopulator.PopulationData data)
+    protected override MazeUnit GetUnitPrefab()
     {
-        Cell cell = GetRandomFreeUnitCell(data);
-
-        MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Slime, cell);
-        data.mazeData[cell.x, cell.y].occupant = enemy;
-
-        return true;
+        return PrefabCache.Instance.Slime;
     }
 }

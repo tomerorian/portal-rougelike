@@ -1,22 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static MazeGeneration;
+﻿using static MazeGeneration;
 using static PopulationUtils;
 
-public class SpawnSkeleton : SpawnRule
+public class SpawnSkeleton : SimpleUnitSpawnRule
 {
     public SpawnSkeleton(int relativeDifficulty, int totalDifficulty) : base(relativeDifficulty, totalDifficulty)
     {
     }
 
-    public override bool AttemptSpawn(MazePopulator.PopulationData data)
+    protected override MazeUnit GetUnitPrefab()
     {
-        Cell cell = GetRandomFreeUnitCell(data);
-
-        MazeUnit enemy = InstantiateInCell(PrefabCache.Instance.Skeleton, cell);
-        data.mazeData[cell.x, cell.y].occupant = enemy;
-
-        return true;
+        return PrefabCache.Instance.Skeleton;
     }
 }
