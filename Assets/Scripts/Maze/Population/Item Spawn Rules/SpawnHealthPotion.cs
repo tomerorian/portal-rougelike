@@ -1,22 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using static MazeGeneration;
-using static PopulationUtils;
-
-public class SpawnHealthPotion : SpawnRule
+﻿public class SpawnHealthPotion : SimpleItemSpawnRule
 {
     public SpawnHealthPotion(int relativeDifficulty, int totalDifficulty) : base (relativeDifficulty, totalDifficulty)
     {
     }
 
-    public override bool AttemptSpawn(MazePopulator.PopulationData data)
+    protected override Item GetItemPrefab()
     {
-        Cell cell = GetRandomFreeItemCell(data);
-
-        Item item = InstantiateInCell(PrefabCache.Instance.HealthPotion, cell);
-        data.mazeData[cell.x, cell.y].item = item;
-
-        return true;
+        return PrefabCache.Instance.HealthPotion;
     }
 }
