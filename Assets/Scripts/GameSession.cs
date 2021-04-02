@@ -17,7 +17,8 @@ public class GameSession : MonoBehaviour
 
     [Header("Debug View")]
     [SerializeField] int levelsCompleted = 0;
-    [SerializeField] int playerCurrentHealth = 0;
+    // TODO: TBD: Find a nicer way to do this?
+    [SerializeField] int playerRefCurrentHealth = 0; // To be used when transitioning between levels
     [SerializeField] int playerMaxHealth = 0;
 
     public GameObject player { get; private set; } = null;
@@ -68,20 +69,16 @@ public class GameSession : MonoBehaviour
 
     private void UpdatePlayer()
     {
-        playerHealth.onDamage += OnPlayerTakenDamage;
         playerHealth.ChangeMaxHealth(playerMaxHealth);
-        playerHealth.SetCurrentHealth(playerCurrentHealth);
-    }
-
-    private void OnPlayerTakenDamage(int amount)
-    {
-        playerCurrentHealth -= amount;
+        playerHealth.SetCurrentHealth(playerRefCurrentHealth);
     }
     #endregion
 
     #region Public Methdos
     public void OnLevelCompleted()
     {
+        playerRefCurrentHealth = playerHealth.GetCurrentHealth();
+
         levelsCompleted++;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -95,7 +92,7 @@ public class GameSession : MonoBehaviour
     private void InitGame()
     {
         levelsCompleted = 0;
-        playerCurrentHealth = startingPlayerHealth;
+        playerRefCurrentHealth = startingPlayerHealth;
         playerMaxHealth = startingPlayerMaxHealth;
         playerInventory.Clear();
     }
