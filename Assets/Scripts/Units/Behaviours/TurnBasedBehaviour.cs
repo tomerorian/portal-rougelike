@@ -42,6 +42,8 @@ public abstract class TurnBasedBehaviour : MonoBehaviour, IComparable<TurnBasedB
 
     protected bool IsAnimationIdle()
     {
+        if (animator == null) { return true; }
+
         return animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
     }
 }
